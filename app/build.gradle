@@ -1,18 +1,19 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion buildConfig.targetSdk
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "io.aethibo.fork"
-        minSdkVersion 24
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        versionCode buildConfig.version.code
+        versionName buildConfig.version.name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -23,10 +24,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -34,12 +41,72 @@ android {
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    // Modules
+    implementation project(':usecases')
+    implementation project(':data')
+    implementation project(':domain')
+
+    // Kotlin
+    implementation libs.kotlinLib
+
+    // Android
+    implementation libs.appCompat
+    implementation libs.activityKtx
+    implementation libs.coreKtx
+    implementation libs.constraintLayout
+    implementation libs.viewBindingDelegate
+    implementation libs.timber
+    implementation libs.swipeRefreshLayout
+
+    // Coroutines
+    implementation libs.coroutinesCore
+    implementation libs.coroutinesAndroid
+
+    // Architecture components
+    implementation libs.viewModel
+    implementation libs.liveData
+    implementation libs.lifeCycle
+
+    // Material Design
+    implementation libs.materialDesign
+
+    // Coil-kt
+    implementation libs.coil
+
+    // Paging
+    implementation libs.paging
+
+    // Navigation
+    implementation libs.pandoraNavigation
+
+    // Retrofit
+    implementation libs.retrofit
+
+    // Gson
+    implementation libs.gson
+
+    // OkHttp
+    implementation libs.okHttp
+    implementation libs.okHttpMockWebServer
+
+    // Moshi
+    implementation libs.moshi
+    implementation libs.moshiConverter
+    kapt libs.moshiCodeGen
+
+    // Koin
+    implementation libs.koinCore
+    implementation libs.koinAndroid
+    implementation libs.koinAndroidScope
+    implementation libs.koinAndroidViewModel
+
+    // Testing
+    testImplementation libs.coreTest
+    testImplementation libs.coroutinesTest
+    testImplementation libs.okhttpTest
+    testImplementation libs.junitTest
+
+    // Android Testing
+    androidTestImplementation libs.extJunitTest
+    androidTestImplementation libs.espressoTest
 }

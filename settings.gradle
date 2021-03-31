@@ -1,2 +1,5 @@
+include ':data'
+include ':domain'
+include ':usecases'
 include ':app'
 rootProject.name = "Fork"
