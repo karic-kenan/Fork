@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'kotlin'
+    id 'kotlin-kapt'
 }
 
 java {
@@ -12,4 +13,8 @@ dependencies {
 
     // Kotlin
     implementation libs.kotlinLib
+
+    // Moshi
+    implementation libs.moshi
+    kapt libs.moshiCodeGen
 }

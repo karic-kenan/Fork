@@ -1,6 +1,7 @@
 package io.aethibo.fork
 
 import android.app.Application
+import io.aethibo.fork.framework.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -17,7 +18,13 @@ class ForkApp : Application() {
     private fun setupKoin() {
         startKoin {
             androidContext(applicationContext)
-            modules()
+            modules(
+                networkModule,
+                dataSourcesModule,
+                repositoriesModule,
+                useCasesModule,
+                viewModelModule
+            )
         }
     }
 }
