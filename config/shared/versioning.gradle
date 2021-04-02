@@ -44,6 +44,7 @@ ext.versions = [
         viewBindingDelegateVersion: '1.0.0',
         timberVersion             : '4.7.1',
         swipeRefreshLayoutVersion : '1.1.0',
+        vvalidatorVersion         : '0.5.2',
 
         /**
          * Architecture components
@@ -51,6 +52,11 @@ ext.versions = [
         viewModelVersion          : '2.3.1',
         liveDataVersion           : '2.3.1',
         lifeCycleVersion          : '2.3.1',
+
+        /**
+         * Firebase
+         */
+        authVersion               : '20.0.3',
 
         /**
          * Navigation components
@@ -99,94 +105,100 @@ ext.libs = [
         /**
          * Kotlin
          */
-        kotlinLib            : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlinVersion}",
+        kotlinLib           : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlinVersion}",
 
         /**
          * Android
          */
-        appCompat            : "androidx.appcompat:appcompat:${versions.appCompatVersion}",
-        activityKtx          : "androidx.activity:activity-ktx:${versions.activityKtxVersion}",
-        coreKtx              : "androidx.core:core-ktx:${versions.coreKtxVersion}",
-        constraintLayout     : "androidx.constraintlayout:constraintlayout:${versions.constraintLayoutVersion}",
-        viewBindingDelegate  : "com.kirich1409.viewbindingpropertydelegate:viewbindingpropertydelegate:${versions.viewBindingDelegateVersion}",
-        timber               : "com.jakewharton.timber:timber:${versions.timberVersion}",
-        swipeRefreshLayout   : "androidx.swiperefreshlayout:swiperefreshlayout:${versions.swipeRefreshLayoutVersion}",
+        appCompat           : "androidx.appcompat:appcompat:${versions.appCompatVersion}",
+        activityKtx         : "androidx.activity:activity-ktx:${versions.activityKtxVersion}",
+        coreKtx             : "androidx.core:core-ktx:${versions.coreKtxVersion}",
+        constraintLayout    : "androidx.constraintlayout:constraintlayout:${versions.constraintLayoutVersion}",
+        viewBindingDelegate : "com.kirich1409.viewbindingpropertydelegate:viewbindingpropertydelegate:${versions.viewBindingDelegateVersion}",
+        timber              : "com.jakewharton.timber:timber:${versions.timberVersion}",
+        swipeRefreshLayout  : "androidx.swiperefreshlayout:swiperefreshlayout:${versions.swipeRefreshLayoutVersion}",
+        vvalidator          : "com.afollestad:vvalidator:${versions.vvalidatorVersion}",
 
         /**
          * Coroutines
          */
-        coroutinesCore       : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutinesCoreVersion}",
-        coroutinesAndroid    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutinesAndroidVersion}",
+        coroutinesCore      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutinesCoreVersion}",
+        coroutinesAndroid   : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutinesAndroidVersion}",
 
         /**
          * Architecture components
          */
-        viewModel            : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.viewModelVersion}",
-        liveData             : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.liveDataVersion}",
-        lifeCycle            : "androidx.lifecycle:lifecycle-common-java8:${versions.lifeCycleVersion}",
+        viewModel           : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.viewModelVersion}",
+        liveData            : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.liveDataVersion}",
+        lifeCycle           : "androidx.lifecycle:lifecycle-common-java8:${versions.lifeCycleVersion}",
+
+        /**
+         * Firebase
+         */
+        firebaseAuth        : "com.google.firebase:firebase-auth-ktx:${versions.authVersion}",
 
         /**
          * Material design
          */
-        materialDesign       : "com.google.android.material:material:${versions.materialDesignVersion}",
+        materialDesign      : "com.google.android.material:material:${versions.materialDesignVersion}",
 
         /**
          * Coil-kt
          */
-        coil                 : "io.coil-kt:coil:${versions.coilVersion}",
+        coil                : "io.coil-kt:coil:${versions.coilVersion}",
 
         /**
          * Paging
          */
-        paging               : "androidx.paging:paging-runtime:${versions.pagingVersion}",
+        paging              : "androidx.paging:paging-runtime:${versions.pagingVersion}",
 
         /**
          * Navigation
          */
-        pandoraNavigation    : "com.pandora.bottomnavigator:bottom-navigator:${versions.pandoraNavVersion}",
+        pandoraNavigation   : "com.pandora.bottomnavigator:bottom-navigator:${versions.pandoraNavVersion}",
 
         /**
          * Retrofit
          */
-        retrofit             : "com.squareup.retrofit2:retrofit:${versions.retrofitVersion}",
+        retrofit            : "com.squareup.retrofit2:retrofit:${versions.retrofitVersion}",
 
         /**
          * Gson
          */
-        gson                 : "com.google.code.gson:gson:${versions.gsonVersion}",
+        gson                : "com.google.code.gson:gson:${versions.gsonVersion}",
 
         /**
          * OkHttp
          */
-        okHttp               : "com.squareup.okhttp3:okhttp:${versions.okHttpVersion}",
-        okHttpMockWebServer  : "com.squareup.okhttp3:mockwebserver:${versions.okHttpMockWebServerVersion}",
+        okHttp              : "com.squareup.okhttp3:okhttp:${versions.okHttpVersion}",
+        okHttpMockWebServer : "com.squareup.okhttp3:mockwebserver:${versions.okHttpMockWebServerVersion}",
 
         /**
          * Moshi
          */
-        moshi                : "com.squareup.moshi:moshi-kotlin:${versions.moshiKotlinVersion}",
-        moshiConverter       : "com.squareup.retrofit2:converter-moshi:${versions.moshiConverterVersion}",
-        moshiCodeGen         : "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshiKotlinCodegenVersion}",
+        moshi               : "com.squareup.moshi:moshi-kotlin:${versions.moshiKotlinVersion}",
+        moshiConverter      : "com.squareup.retrofit2:converter-moshi:${versions.moshiConverterVersion}",
+        moshiCodeGen        : "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshiKotlinCodegenVersion}",
 
         /**
          * Koin
          */
-        koinCore             : "org.koin:koin-core:${versions.koinVersion}",
-        koinAndroid          : "org.koin:koin-android:${versions.koinVersion}",
-        koinAndroidScope     : "org.koin:koin-android-scope:${versions.koinVersion}",
-        koinAndroidViewModel : "org.koin:koin-android-viewmodel:${versions.koinVersion}",
+        koinCore            : "org.koin:koin-core:${versions.koinVersion}",
+        koinAndroid         : "org.koin:koin-android:${versions.koinVersion}",
+        koinAndroidScope    : "org.koin:koin-android-scope:${versions.koinVersion}",
+        koinAndroidViewModel: "org.koin:koin-android-viewmodel:${versions.koinVersion}",
 
         /**
          * Testing
          */
-        coreTest             : "androidx.arch.core:core-testing:${versions.coreTestVersion}",
-        coroutinesTest       : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutinesTestVersion}",
-        okhttpTest           : "com.squareup.okhttp3:mockwebserver:${versions.okhttpTestVersion}",
-        junitTest            : "junit:junit:${versions.junitTestVersion}",
+        coreTest            : "androidx.arch.core:core-testing:${versions.coreTestVersion}",
+        coroutinesTest      : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutinesTestVersion}",
+        okhttpTest          : "com.squareup.okhttp3:mockwebserver:${versions.okhttpTestVersion}",
+        junitTest           : "junit:junit:${versions.junitTestVersion}",
 
         /**
          * Android Testing
          */
-        extJunitTest         : "androidx.test.ext:junit:${versions.extJunitTetVersion}",
-        espressoTest         : "androidx.test.espresso:espresso-core:${versions.espressoTestVersion}"
+        extJunitTest        : "androidx.test.ext:junit:${versions.extJunitTetVersion}",
+        espressoTest        : "androidx.test.espresso:espresso-core:${versions.espressoTestVersion}"
 ]

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "962980419020",
+    "firebase_url": "https://grabs-3d0b6.firebaseio.com",
+    "project_id": "grabs-3d0b6",
+    "storage_bucket": "grabs-3d0b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962980419020:android:a2f726aa3f8208f306b969",
+        "android_client_info": {
+          "package_name": "io.aethibo.fork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962980419020-epsh9ri3q70po0d9mp2stdc21ern58nr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzWaWKvRIOBdy_9B5pkCwlsbMMrP7hWEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962980419020-epsh9ri3q70po0d9mp2stdc21ern58nr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
