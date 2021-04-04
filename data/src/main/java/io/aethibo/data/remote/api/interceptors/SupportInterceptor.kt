@@ -1,9 +1,9 @@
 package io.aethibo.data.remote.api.interceptors
 
-import okhttp3.*
-import java.io.IOException
+import okhttp3.Interceptor
+import okhttp3.Response
 
-class SupportInterceptor : Interceptor, Authenticator {
+class SupportInterceptor : Interceptor {
 
     /**
      * Interceptor class for setting of the headers for every request
@@ -11,9 +11,9 @@ class SupportInterceptor : Interceptor, Authenticator {
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()
         request = request.newBuilder()
-            .addHeader("Content-Type", "application/json")
-            .addHeader("Accept", "application/json")
-            .build()
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
+                .build()
         return chain.proceed(request)
     }
 
@@ -21,7 +21,7 @@ class SupportInterceptor : Interceptor, Authenticator {
      * Authenticator for when the authToken need to be refresh and updated
      * every time we get a 401 error code
      */
-    @Throws(IOException::class)
+    /*@Throws(IOException::class)
     override fun authenticate(route: Route?, response: Response): Request? {
         var requestAvailable: Request? = null
         try {
@@ -32,5 +32,5 @@ class SupportInterceptor : Interceptor, Authenticator {
         } catch (ex: Exception) {
         }
         return requestAvailable
-    }
+    }*/
 }

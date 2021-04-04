@@ -4,12 +4,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.asLiveData
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.aethibo.data.utils.Resource
 import io.aethibo.domain.AccessTokenResponse
@@ -20,12 +18,11 @@ import io.aethibo.fork.framework.utils.AppConst
 import io.aethibo.fork.ui.auth.utils.openNewTabWindow
 import io.aethibo.fork.ui.auth.utils.snackBar
 import io.aethibo.fork.ui.auth.viewmodel.AuthViewModel
-import kotlinx.coroutines.flow.collectLatest
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class AuthFragment : Fragment(), View.OnClickListener {
+class AuthFragment : Fragment(R.layout.fragment_auth), View.OnClickListener {
 
     private val binding: FragmentAuthBinding by viewBinding()
     private val viewModel: AuthViewModel by viewModel()
@@ -34,11 +31,6 @@ class AuthFragment : Fragment(), View.OnClickListener {
     companion object {
         fun newInstance() = AuthFragment()
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_auth, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,27 +44,7 @@ class AuthFragment : Fragment(), View.OnClickListener {
     }
 
     private fun subscribeToObservers() {
-        lifecycleScope.launchWhenResumed {
-            viewModel.accessTokenStatus.collectLatest { value: Resource<AccessTokenResponse> ->
-                when (value) {
-                    is Resource.Init -> Timber.d("Initializing authentication via GitHub")
-                    is Resource.Loading -> binding.pbAuthFragment.isVisible = true
-                    is Resource.Success -> {
-                        binding.pbAuthFragment.isVisible = false
-
-                        val data: AccessTokenResponse = value.data as AccessTokenResponse
-                        saveAccessTokenAndNavigate(data)
-                    }
-                    is Resource.Failure -> {
-                        binding.pbAuthFragment.isVisible = false
-
-                        Timber.e("Error: ${value.message}")
-                        snackBar("Error: ${value.message ?: "Unknown error occurred"}")
-                    }
-                    else -> throw IllegalStateException("Unknown state")
-                }
-            }
-        }
+        viewModel.accessTokenStatus.asLiveData().observe(viewLifecycleOwner, ::handleStatesForAccessToken)
     }
 
     override fun onResume() {
@@ -88,6 +60,24 @@ class AuthFragment : Fragment(), View.OnClickListener {
 
             viewModel.getAccessToken(AppConst.clientId, AppConst.clientSecret, code)
         }
+    }
+
+    private fun handleStatesForAccessToken(value: Resource<AccessTokenResponse>) = when (value) {
+        is Resource.Init -> Timber.d("Initializing authentication via GitHub")
+        is Resource.Loading -> binding.pbAuthFragment.isVisible = true
+        is Resource.Success -> {
+            binding.pbAuthFragment.isVisible = false
+
+            val data: AccessTokenResponse = value.data as AccessTokenResponse
+            saveAccessTokenAndNavigate(data)
+        }
+        is Resource.Failure -> {
+            binding.pbAuthFragment.isVisible = false
+
+            Timber.e("Error: ${value.message}")
+            snackBar("Error: ${value.message ?: "Unknown error occurred"}")
+        }
+        else -> throw IllegalStateException("Unknown state")
     }
 
     private fun saveAccessTokenAndNavigate(data: AccessTokenResponse) {
@@ -110,13 +100,13 @@ class AuthFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.btnAuthorize -> openNewTabWindow(
-                requireContext(),
-                getString(
-                    R.string.urlOAuth,
-                    AppConst.authorizeUrl,
-                    AppConst.clientId,
-                    AppConst.redirectUrl
-                )
+                    requireContext(),
+                    getString(
+                            R.string.urlOAuth,
+                            AppConst.authorizeUrl,
+                            AppConst.clientId,
+                            AppConst.redirectUrl
+                    )
             )
         }
     }

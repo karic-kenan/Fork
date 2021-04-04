@@ -15,7 +15,6 @@ val networkModule = module {
     single {
         val client: OkHttpClient = OkHttpClient.Builder()
             .addInterceptor(SupportInterceptor())
-            .authenticator(SupportInterceptor())
             .build()
 
         val converterFactory: MoshiConverterFactory = MoshiConverterFactory.create(
