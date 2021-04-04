@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'com.google.gms.google-services'
 }
 
 android {
@@ -58,7 +57,6 @@ dependencies {
     implementation libs.viewBindingDelegate
     implementation libs.timber
     implementation libs.swipeRefreshLayout
-    implementation libs.vvalidator
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Coroutines
@@ -91,9 +89,6 @@ dependencies {
     // OkHttp
     implementation libs.okHttp
     implementation libs.okHttpMockWebServer
-
-    // Firebase
-    implementation libs.firebaseAuth
 
     // Moshi
     implementation libs.moshi

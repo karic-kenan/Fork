@@ -44,7 +44,6 @@ ext.versions = [
         viewBindingDelegateVersion: '1.0.0',
         timberVersion             : '4.7.1',
         swipeRefreshLayoutVersion : '1.1.0',
-        vvalidatorVersion         : '0.5.2',
 
         /**
          * Architecture components
@@ -52,11 +51,6 @@ ext.versions = [
         viewModelVersion          : '2.3.1',
         liveDataVersion           : '2.3.1',
         lifeCycleVersion          : '2.3.1',
-
-        /**
-         * Firebase
-         */
-        authVersion               : '20.0.3',
 
         /**
          * Navigation components
@@ -117,7 +111,6 @@ ext.libs = [
         viewBindingDelegate : "com.kirich1409.viewbindingpropertydelegate:viewbindingpropertydelegate:${versions.viewBindingDelegateVersion}",
         timber              : "com.jakewharton.timber:timber:${versions.timberVersion}",
         swipeRefreshLayout  : "androidx.swiperefreshlayout:swiperefreshlayout:${versions.swipeRefreshLayoutVersion}",
-        vvalidator          : "com.afollestad:vvalidator:${versions.vvalidatorVersion}",
 
         /**
          * Coroutines
@@ -131,11 +124,6 @@ ext.libs = [
         viewModel           : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.viewModelVersion}",
         liveData            : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.liveDataVersion}",
         lifeCycle           : "androidx.lifecycle:lifecycle-common-java8:${versions.lifeCycleVersion}",
-
-        /**
-         * Firebase
-         */
-        firebaseAuth        : "com.google.firebase:firebase-auth-ktx:${versions.authVersion}",
 
         /**
          * Material design

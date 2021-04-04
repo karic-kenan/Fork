@@ -22,23 +22,6 @@
             android:text="@string/labelAuthTitle"
             android:textSize="18sp" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilAuthUsername"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:hint="@string/labelAuthUsername">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etAuthUsername"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAuthorize"
             android:layout_width="wrap_content"
