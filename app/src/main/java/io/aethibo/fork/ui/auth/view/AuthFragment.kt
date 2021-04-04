@@ -1,5 +1,7 @@
 package io.aethibo.fork.ui.auth.view
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.aethibo.data.utils.Resource
-import io.aethibo.data.utils.tokenize
 import io.aethibo.domain.AccessTokenResponse
+import io.aethibo.fork.MainActivity
 import io.aethibo.fork.R
 import io.aethibo.fork.databinding.FragmentAuthBinding
 import io.aethibo.fork.framework.utils.AppConst
@@ -19,6 +21,7 @@ import io.aethibo.fork.ui.auth.utils.openNewTabWindow
 import io.aethibo.fork.ui.auth.utils.snackBar
 import io.aethibo.fork.ui.auth.viewmodel.AuthViewModel
 import kotlinx.coroutines.flow.collectLatest
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -26,6 +29,7 @@ class AuthFragment : Fragment(), View.OnClickListener {
 
     private val binding: FragmentAuthBinding by viewBinding()
     private val viewModel: AuthViewModel by viewModel()
+    private val sharedPreferences: SharedPreferences by inject()
 
     companion object {
         fun newInstance() = AuthFragment()
@@ -57,12 +61,7 @@ class AuthFragment : Fragment(), View.OnClickListener {
                         binding.pbAuthFragment.isVisible = false
 
                         val data: AccessTokenResponse = value.data as AccessTokenResponse
-                        /**
-                         * TODO: Encrypt token and save it (encrypted shared prefs or realm?)
-                         * TODO: Upon success save, navigate to [MainActivity]
-                         */
-                        Timber.d("Data: ${data.accessToken}, ${data.tokenType}")
-                        Timber.d("Token: ${data.accessToken.tokenize(data.tokenType)}")
+                        saveAccessTokenAndNavigate(data)
                     }
                     is Resource.Failure -> {
                         binding.pbAuthFragment.isVisible = false
@@ -88,6 +87,23 @@ class AuthFragment : Fragment(), View.OnClickListener {
             val code = uri.getQueryParameter(getString(R.string.urlQueryParamCode)) ?: ""
 
             viewModel.getAccessToken(AppConst.clientId, AppConst.clientSecret, code)
+        }
+    }
+
+    private fun saveAccessTokenAndNavigate(data: AccessTokenResponse) {
+
+        // Save token to encrypted shared preferences
+        // then navigate to MainActivity
+        with(sharedPreferences.edit()) {
+            apply {
+                putString(AppConst.authTokenType, data.tokenType)
+                putString(AppConst.authAccessToken, data.accessToken)
+                apply()
+            }
+        }.also {
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            requireActivity().startActivity(intent)
+            requireActivity().finish()
         }
     }
 

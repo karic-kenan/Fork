@@ -57,7 +57,8 @@ dependencies {
     implementation libs.viewBindingDelegate
     implementation libs.timber
     implementation libs.swipeRefreshLayout
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation libs.securityCrypto
+    implementation libs.legacySupport
 
     // Coroutines
     implementation libs.coroutinesCore

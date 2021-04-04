@@ -9,4 +9,10 @@ object AppConst {
     const val clientId = "3cc0204477dee1d2ecde"
     const val clientSecret = "fab7fecd05bbb7cc5d7987843ca18d609a12385a"
     const val redirectUrl = "aethibo://callback"
+
+    /**
+     * Shared preferences
+     */
+    const val authTokenType = "AuthTokenType"
+    const val authAccessToken = "AuthAccessToken"
 }

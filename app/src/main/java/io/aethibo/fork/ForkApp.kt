@@ -8,6 +8,14 @@ import timber.log.Timber
 
 class ForkApp : Application() {
 
+    companion object {
+        lateinit var instance: Application
+    }
+
+    init {
+        instance = this
+    }
+
     override fun onCreate() {
         super.onCreate()
 
@@ -19,6 +27,7 @@ class ForkApp : Application() {
         startKoin {
             androidContext(applicationContext)
             modules(
+                appModule,
                 networkModule,
                 dataSourcesModule,
                 repositoriesModule,
