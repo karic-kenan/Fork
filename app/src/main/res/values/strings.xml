@@ -5,4 +5,6 @@
     <string name="labelAuthTitle">Authorize using Github</string>
     <string name="labelAuthUsername">Enter your username</string>
     <string name="actionLogin">Login</string>
+    <string name="urlOAuth">%s?client_id=%s&amp;redirect_uri=%s</string>
+    <string name="urlQueryParamCode">code</string>
 </resources>

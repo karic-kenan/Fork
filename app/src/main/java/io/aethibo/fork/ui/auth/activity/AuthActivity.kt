@@ -1,4 +1,4 @@
-package io.aethibo.fork.ui.auth
+package io.aethibo.fork.ui.auth.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +11,10 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
         supportActionBar?.hide()
+
+        /**
+         * TODO: Check is token exists, if does navigate to [MainActivity]
+         */
 
         replaceFragment(AuthFragment.newInstance())
     }
