@@ -57,6 +57,8 @@ dependencies {
     implementation libs.viewBindingDelegate
     implementation libs.timber
     implementation libs.swipeRefreshLayout
+    implementation libs.securityCrypto
+    implementation libs.legacySupport
 
     // Coroutines
     implementation libs.coroutinesCore

@@ -15,4 +15,10 @@ dependencies {
 
     // Kotlin
     implementation libs.kotlinLib
+
+    // Retrofit
+    implementation libs.retrofit
+
+    // OkHttp
+    implementation libs.okHttp
 }
