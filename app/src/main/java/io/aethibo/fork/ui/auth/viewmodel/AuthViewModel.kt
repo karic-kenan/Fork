@@ -17,7 +17,7 @@ class AuthViewModel(
 ) : ViewModel() {
 
     private val _accessTokenStatus: MutableStateFlow<Resource<AccessTokenResponse>> =
-        MutableStateFlow(Resource.Init())
+        MutableStateFlow(Resource.Idle())
     val accessTokenStatus: StateFlow<Resource<AccessTokenResponse>>
         get() = _accessTokenStatus
 

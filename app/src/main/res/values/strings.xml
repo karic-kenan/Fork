@@ -7,4 +7,11 @@
     <string name="actionLogin">Login</string>
     <string name="urlOAuth">%s?client_id=%s&amp;redirect_uri=%s</string>
     <string name="urlQueryParamCode">code</string>
+
+    <!-- Main menu -->
+    <string name="menuLabelHome">Home</string>
+    <string name="menuLabelSearch">Search</string>
+    <string name="menuLabelFeed">Feed</string>
+    <string name="menuLabelNotifications">Notifications</string>
+    <string name="menuLabelProfile">Profile</string>
 </resources>

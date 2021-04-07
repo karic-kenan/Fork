@@ -11,7 +11,7 @@ import androidx.lifecycle.asLiveData
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.aethibo.data.utils.Resource
 import io.aethibo.domain.AccessTokenResponse
-import io.aethibo.fork.MainActivity
+import io.aethibo.fork.ui.MainActivity
 import io.aethibo.fork.R
 import io.aethibo.fork.databinding.FragmentAuthBinding
 import io.aethibo.fork.framework.utils.AppConst
@@ -63,7 +63,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth), View.OnClickListener {
     }
 
     private fun handleStatesForAccessToken(value: Resource<AccessTokenResponse>) = when (value) {
-        is Resource.Init -> Timber.d("Initializing authentication via GitHub")
+        is Resource.Idle -> Timber.d("Initializing authentication via GitHub")
         is Resource.Loading -> binding.pbAuthFragment.isVisible = true
         is Resource.Success -> {
             binding.pbAuthFragment.isVisible = false
