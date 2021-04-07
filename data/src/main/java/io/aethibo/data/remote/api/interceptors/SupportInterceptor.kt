@@ -11,8 +11,8 @@ class SupportInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()
         request = request.newBuilder()
-                .addHeader("Content-Type", "application/json")
-                .addHeader("Accept", "application/json")
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
                 .build()
         return chain.proceed(request)
     }

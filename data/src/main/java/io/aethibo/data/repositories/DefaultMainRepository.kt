@@ -7,12 +7,8 @@ import io.aethibo.domain.User
 
 class DefaultMainRepository(private val remote: MainRemoteDataSource) : MainRepository {
 
-    override suspend fun getAccessToken(
-            clientId: String,
-            clientSecret: String,
-            code: String
-    ): Resource<AccessTokenResponse> =
-            remote.getAccessToken(clientId, clientSecret, code)
+    override suspend fun getAccessToken(params: Map<String, String>): Resource<AccessTokenResponse> =
+            remote.getAccessToken(params)
 
     override suspend fun getUserInfo(token: String): Resource<User> =
             remote.getUserInfo(token)

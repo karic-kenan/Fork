@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Fork</string>
 
+    <!-- Auth query map keys -->
+    <string name="authClientId">client_id</string>
+    <string name="authClientSecret">client_secret</string>
+    <string name="authClientCode">code</string>
+
     <!-- Auth fragment -->
     <string name="labelAuthTitle">Authorize using Github</string>
     <string name="labelAuthUsername">Enter your username</string>

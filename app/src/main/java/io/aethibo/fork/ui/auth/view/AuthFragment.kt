@@ -11,10 +11,10 @@ import androidx.lifecycle.asLiveData
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.aethibo.data.utils.Resource
 import io.aethibo.domain.AccessTokenResponse
-import io.aethibo.fork.ui.MainActivity
 import io.aethibo.fork.R
 import io.aethibo.fork.databinding.FragmentAuthBinding
 import io.aethibo.fork.framework.utils.AppConst
+import io.aethibo.fork.ui.MainActivity
 import io.aethibo.fork.ui.auth.utils.openNewTabWindow
 import io.aethibo.fork.ui.auth.utils.snackBar
 import io.aethibo.fork.ui.auth.viewmodel.AuthViewModel
@@ -57,8 +57,12 @@ class AuthFragment : Fragment(R.layout.fragment_auth), View.OnClickListener {
 
         if (uri != null && uri.toString().startsWith(AppConst.redirectUrl)) {
             val code = uri.getQueryParameter(getString(R.string.urlQueryParamCode)) ?: ""
+            val params = mapOf(
+                    getString(R.string.authClientId) to AppConst.clientId,
+                    getString(R.string.authClientSecret) to AppConst.clientSecret,
+                    getString(R.string.authClientCode) to code)
 
-            viewModel.getAccessToken(AppConst.clientId, AppConst.clientSecret, code)
+            viewModel.getAccessToken(params)
         }
     }
 

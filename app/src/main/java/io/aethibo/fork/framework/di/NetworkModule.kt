@@ -14,30 +14,35 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 val networkModule = module {
     single {
         val client: OkHttpClient = OkHttpClient.Builder()
-            .addInterceptor(SupportInterceptor())
-            .build()
+                .addInterceptor(SupportInterceptor())
+                .build()
 
         val converterFactory: MoshiConverterFactory = MoshiConverterFactory.create(
-            Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+                Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         )
 
         Retrofit.Builder()
-            .baseUrl(AppConst.githubApiUrl)
-            .addConverterFactory(converterFactory)
-            .client(client)
-            .build()
-            .create(ApiService::class.java)
+                .baseUrl(AppConst.githubApiUrl)
+                .addConverterFactory(converterFactory)
+                .client(client)
+                .build()
+                .create(ApiService::class.java)
     }
 
     single {
+        val client: OkHttpClient = OkHttpClient.Builder()
+                .addInterceptor(SupportInterceptor())
+                .build()
+
         val converterFactory: MoshiConverterFactory = MoshiConverterFactory.create(
-            Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+                Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         )
 
         Retrofit.Builder()
-            .baseUrl(AppConst.githubAuthUrl)
-            .addConverterFactory(converterFactory)
-            .build()
-            .create(AuthService::class.java)
+                .baseUrl(AppConst.githubAuthUrl)
+                .addConverterFactory(converterFactory)
+                .client(client)
+                .build()
+                .create(AuthService::class.java)
     }
 }

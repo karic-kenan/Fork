@@ -15,14 +15,9 @@ class MainRemoteDataSourceImpl(
     private val authService: AuthService
 ) : MainRemoteDataSource {
 
-    override suspend fun getAccessToken(
-        clientId: String,
-        clientSecret: String,
-        code: String
-    ): Resource<AccessTokenResponse> = withContext(Dispatchers.IO) {
+    override suspend fun getAccessToken(params: Map<String, String>): Resource<AccessTokenResponse> = withContext(Dispatchers.IO) {
         safeCall {
-            val result: AccessTokenResponse =
-                authService.getAccessToken(clientId, clientSecret, code)
+            val result: AccessTokenResponse = authService.getAccessToken(params)
 
             Resource.Success(result)
         }

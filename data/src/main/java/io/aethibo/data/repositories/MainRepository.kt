@@ -9,11 +9,7 @@ interface MainRepository {
     /**
      * Authorization
      */
-    suspend fun getAccessToken(
-        clientId: String,
-        clientSecret: String,
-        code: String
-    ): Resource<AccessTokenResponse>
+    suspend fun getAccessToken(params: Map<String, String>): Resource<AccessTokenResponse>
 
     // Current logged in user
     suspend fun getUserInfo(token: String): Resource<User>
