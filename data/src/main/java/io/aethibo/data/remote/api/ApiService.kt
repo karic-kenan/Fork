@@ -1,9 +1,12 @@
 package io.aethibo.data.remote.api
 
 import io.aethibo.domain.User
+import retrofit2.http.GET
+import retrofit2.http.Header
 
 interface ApiService {
 
     // Current user
-    suspend fun getUserInfo(): User
+    @GET("user")
+    suspend fun getUserInfo(@Header("Authorization") token: String): User
 }

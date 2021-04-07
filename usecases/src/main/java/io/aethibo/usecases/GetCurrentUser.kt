@@ -5,11 +5,11 @@ import io.aethibo.data.utils.Resource
 import io.aethibo.domain.User
 
 interface GetCurrentUserUseCase {
-    suspend operator fun invoke(): Resource<User>
+    suspend operator fun invoke(token: String): Resource<User>
 }
 
 class GetCurrentUserUseCaseImpl(private val repository: MainRepository) : GetCurrentUserUseCase {
 
-    override suspend operator fun invoke(): Resource<User> =
-        repository.getUserInfo()
+    override suspend operator fun invoke(token: String): Resource<User> =
+        repository.getUserInfo(token)
 }

@@ -16,5 +16,5 @@ interface MainRemoteDataSource {
     ): Resource<AccessTokenResponse>
 
     // Current logged in user
-    suspend fun getUserInfo(): Resource<User>
+    suspend fun getUserInfo(token: String): Resource<User>
 }

@@ -11,7 +11,7 @@ data class User(
     val bio: String = "",
     val blog: String = "",
     val collaborators: Int = 0,
-    val company: Any = Any(),
+    val company: String?,
     @Json(name = "created_at")
     val createdAt: String = "",
     @Json(name = "disk_usage")
@@ -62,7 +62,7 @@ data class User(
     @Json(name = "total_private_repos")
     val totalPrivateRepos: Int = 0,
     @Json(name = "twitter_username")
-    val twitterUsername: Any = Any(),
+    val twitterUsername: String?,
     @Json(name = "two_factor_authentication")
     val twoFactorAuthentication: Boolean = false,
     val type: String = "",

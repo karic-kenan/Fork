@@ -28,10 +28,10 @@ class MainRemoteDataSourceImpl(
         }
     }
 
-    override suspend fun getUserInfo(): Resource<User> = withContext(Dispatchers.IO) {
+    override suspend fun getUserInfo(token: String): Resource<User> = withContext(Dispatchers.IO) {
         safeCall {
 
-            val result: User = service.getUserInfo()
+            val result: User = service.getUserInfo(token)
 
             Resource.Success(result)
         }
