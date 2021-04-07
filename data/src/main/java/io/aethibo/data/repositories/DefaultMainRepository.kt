@@ -2,8 +2,8 @@ package io.aethibo.data.repositories
 
 import io.aethibo.data.datasource.MainRemoteDataSource
 import io.aethibo.data.utils.Resource
-import io.aethibo.domain.AccessTokenResponse
 import io.aethibo.domain.User
+import io.aethibo.domain.response.AccessTokenResponse
 
 class DefaultMainRepository(private val remote: MainRemoteDataSource) : MainRepository {
 

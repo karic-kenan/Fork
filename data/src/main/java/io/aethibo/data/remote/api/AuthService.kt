@@ -1,6 +1,6 @@
 package io.aethibo.data.remote.api
 
-import io.aethibo.domain.AccessTokenResponse
+import io.aethibo.domain.response.AccessTokenResponse
 import retrofit2.http.FieldMap
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST

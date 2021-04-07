@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.asLiveData
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.aethibo.data.utils.Resource
-import io.aethibo.domain.AccessTokenResponse
+import io.aethibo.domain.response.AccessTokenResponse
 import io.aethibo.fork.R
 import io.aethibo.fork.databinding.FragmentAuthBinding
 import io.aethibo.fork.framework.utils.AppConst

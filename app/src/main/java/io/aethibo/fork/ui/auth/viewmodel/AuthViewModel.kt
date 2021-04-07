@@ -3,7 +3,7 @@ package io.aethibo.fork.ui.auth.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.aethibo.data.utils.Resource
-import io.aethibo.domain.AccessTokenResponse
+import io.aethibo.domain.response.AccessTokenResponse
 import io.aethibo.usecases.GetAccessTokenUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

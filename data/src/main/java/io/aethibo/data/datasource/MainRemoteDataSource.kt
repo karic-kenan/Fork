@@ -1,8 +1,8 @@
 package io.aethibo.data.datasource
 
 import io.aethibo.data.utils.Resource
-import io.aethibo.domain.AccessTokenResponse
 import io.aethibo.domain.User
+import io.aethibo.domain.response.AccessTokenResponse
 
 interface MainRemoteDataSource {
 
