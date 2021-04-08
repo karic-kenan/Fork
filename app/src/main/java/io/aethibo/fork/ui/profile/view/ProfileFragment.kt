@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.asLiveData
 import io.aethibo.data.utils.Resource
 import io.aethibo.data.utils.tokenize
+import io.aethibo.domain.Repository
 import io.aethibo.domain.User
 import io.aethibo.fork.R
 import io.aethibo.fork.framework.utils.AppConst
@@ -28,9 +29,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val token = getToken()
-        Timber.d("Token: $token")
-        viewModel.getCurrentUser(token)
+        viewModel.getCurrentUser(getToken())
+        viewModel.getUsersRepositories(getToken(), mapOf("sort" to "updated"))
 
         subscribeToObservers()
     }
@@ -42,19 +42,34 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun subscribeToObservers() {
-        viewModel.userMetadataStatus.asLiveData().observe(viewLifecycleOwner) { result: Resource<User> ->
-            when (result) {
-                is Resource.Loading -> {
-                    Timber.d("Loading user data")
-                }
-                is Resource.Success -> {
-                    val data: User = result.data as User
-                    Timber.d("User: ${data.name}")
-                }
-                is Resource.Failure -> {
-                    snackBar(result.message ?: "Unknown error occurred!")
+        viewModel.userMetadataStatus.asLiveData()
+            .observe(viewLifecycleOwner) { result: Resource<User> ->
+                when (result) {
+                    is Resource.Loading -> {
+                        Timber.d("Loading user data")
+                    }
+                    is Resource.Success -> {
+                        val data: User = result.data as User
+                        Timber.d("User: ${data.name}")
+                    }
+                    is Resource.Failure -> {
+                        snackBar(result.message ?: "Unknown error occurred!")
+                    }
                 }
             }
-        }
+
+        viewModel.repositoryStatus.asLiveData()
+            .observe(viewLifecycleOwner) { result: Resource<List<Repository>> ->
+                when (result) {
+                    is Resource.Loading -> Timber.d("Loading users repositories")
+                    is Resource.Success -> {
+                        val data: List<Repository> = result.data as List<Repository>
+                        Timber.d("RepoData: $data")
+                    }
+                    is Resource.Failure -> {
+                        snackBar(result.message ?: "Unknown error occurred")
+                    }
+                }
+            }
     }
 }

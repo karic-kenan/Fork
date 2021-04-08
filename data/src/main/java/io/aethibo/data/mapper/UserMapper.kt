@@ -7,7 +7,14 @@ import io.aethibo.domain.response.UserResponse
 class UserMapper : EntityMapper<UserResponse, User> {
 
     override fun mapFromEntity(entity: UserResponse): User =
-            User(name = entity.name)
+            User(name = entity.name,
+                    login = entity.login,
+                    avatarUrl = entity.avatarUrl,
+                    location = entity.location,
+                    bio = entity.bio,
+                    publicRepos = entity.publicRepos,
+                    followers = entity.followers,
+                    following = entity.following)
 
     override fun mapToEntity(domainModel: User): UserResponse = UserResponse(
             name = domainModel.name,
