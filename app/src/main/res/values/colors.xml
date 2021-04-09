@@ -12,4 +12,5 @@
     <color name="colorPrimaryDark">#2b2e4a</color>
     <color name="colorSecondary">#53354a</color>
     <color name="colorAccent">#903749</color>
+    <color name="colorWhiteAlpha30">#4de4e4e4</color>
 </resources>

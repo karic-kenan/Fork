@@ -4,8 +4,9 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.aethibo.data.remote.api.ApiService
 import io.aethibo.data.remote.api.AuthService
-import io.aethibo.data.remote.api.interceptors.SupportInterceptor
 import io.aethibo.fork.framework.utils.AppConst
+import io.aethibo.fork.framework.utils.interceptor.SupportInterceptor
+import io.aethibo.fork.framework.utils.interceptor.TimberLoggingInterceptor
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -14,7 +15,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 val networkModule = module {
     single {
         val client: OkHttpClient = OkHttpClient.Builder()
-                .addInterceptor(SupportInterceptor())
+                .addInterceptor(SupportInterceptor(get()))
+                .addInterceptor(TimberLoggingInterceptor())
+                .authenticator(SupportInterceptor(get()))
                 .build()
 
         val converterFactory: MoshiConverterFactory = MoshiConverterFactory.create(
@@ -31,7 +34,7 @@ val networkModule = module {
 
     single {
         val client: OkHttpClient = OkHttpClient.Builder()
-                .addInterceptor(SupportInterceptor())
+                .addInterceptor(SupportInterceptor(get()))
                 .build()
 
         val converterFactory: MoshiConverterFactory = MoshiConverterFactory.create(

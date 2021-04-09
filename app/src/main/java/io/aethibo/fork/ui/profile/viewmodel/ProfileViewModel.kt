@@ -29,17 +29,17 @@ class ProfileViewModel(
     val repositoryStatus: StateFlow<Resource<List<Repository>>>
         get() = _repositoryStatus
 
-    fun getCurrentUser(token: String) {
+    fun getCurrentUser() {
         viewModelScope.launch(dispatcher) {
-            val result: Resource<User> = getUser.invoke(token)
+            val result: Resource<User> = getUser.invoke()
 
             _userMetadataStatus.value = result
         }
     }
 
-    fun getUsersRepositories(token: String, params: Map<String, String>) {
+    fun getUsersRepositories(params: Map<String, String>) {
         viewModelScope.launch(dispatcher) {
-            val result: Resource<List<Repository>> = getUsersRepositories.invoke(token, params)
+            val result: Resource<List<Repository>> = getUsersRepositories.invoke(params)
 
             _repositoryStatus.value = result
         }

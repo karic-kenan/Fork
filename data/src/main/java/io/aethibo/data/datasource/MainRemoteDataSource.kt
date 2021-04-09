@@ -13,8 +13,8 @@ interface MainRemoteDataSource {
     suspend fun getAccessToken(params: Map<String, String>): Resource<AccessTokenResponse>
 
     // Current logged in user
-    suspend fun getUserInfo(token: String): Resource<User>
+    suspend fun getUserInfo(): Resource<User>
 
     // Current user repos
-    suspend fun getCurrentUserRepos(token: String, params: Map<String, String>): Resource<List<Repository>>
+    suspend fun getCurrentUserRepos(params: Map<String, String>): Resource<List<Repository>>
 }

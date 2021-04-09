@@ -10,18 +10,12 @@ import io.aethibo.data.utils.Resource
 import io.aethibo.domain.Repository
 
 interface GetUsersRepositoriesUseCase {
-    suspend operator fun invoke(
-        token: String,
-        params: Map<String, String>
-    ): Resource<List<Repository>>
+    suspend operator fun invoke(params: Map<String, String>): Resource<List<Repository>>
 }
 
 class GetUsersRepositoriesUseCaseImpl(private val repository: MainRepository) :
     GetUsersRepositoriesUseCase {
 
-    override suspend fun invoke(
-        token: String,
-        params: Map<String, String>
-    ): Resource<List<Repository>> =
-        repository.getCurrentUserRepos(token, params)
+    override suspend fun invoke(params: Map<String, String>): Resource<List<Repository>> =
+        repository.getCurrentUserRepos(params)
 }

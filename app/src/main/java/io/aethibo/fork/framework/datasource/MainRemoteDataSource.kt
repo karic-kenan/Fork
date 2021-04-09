@@ -31,20 +31,20 @@ class MainRemoteDataSourceImpl(
             }
         }
 
-    override suspend fun getUserInfo(token: String): Resource<User> = withContext(Dispatchers.IO) {
+    override suspend fun getUserInfo(): Resource<User> = withContext(Dispatchers.IO) {
         safeCall {
 
-            val response: UserResponse = service.getUserInfo(token)
+            val response: UserResponse = service.getUserInfo()
             val result = userMapper.mapFromEntity(response)
 
             Resource.Success(result)
         }
     }
 
-    override suspend fun getCurrentUserRepos(token: String, params: Map<String, String>): Resource<List<Repository>> =
+    override suspend fun getCurrentUserRepos(params: Map<String, String>): Resource<List<Repository>> =
         withContext(Dispatchers.IO) {
             safeCall {
-                val response: List<RepositoryResponse> = service.getCurrentUserRepos(token, params)
+                val response: List<RepositoryResponse> = service.getCurrentUserRepos(params)
                 val result = repositoryMapper.mapFromEntityList(response)
 
                 Resource.Success(result)

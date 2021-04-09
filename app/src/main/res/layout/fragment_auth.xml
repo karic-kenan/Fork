@@ -32,7 +32,7 @@
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_fork" />
+            android:src="@drawable/ic_fork_logo" />
 
         <TextView
             android:id="@+id/tvAuthTitle"

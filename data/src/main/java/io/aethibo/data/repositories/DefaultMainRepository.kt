@@ -11,12 +11,9 @@ class DefaultMainRepository(private val remote: MainRemoteDataSource) : MainRepo
     override suspend fun getAccessToken(params: Map<String, String>): Resource<AccessTokenResponse> =
         remote.getAccessToken(params)
 
-    override suspend fun getUserInfo(token: String): Resource<User> =
-        remote.getUserInfo(token)
+    override suspend fun getUserInfo(): Resource<User> =
+        remote.getUserInfo()
 
-    override suspend fun getCurrentUserRepos(
-        token: String,
-        params: Map<String, String>
-    ): Resource<List<Repository>> =
-        remote.getCurrentUserRepos(token, params)
+    override suspend fun getCurrentUserRepos(params: Map<String, String>): Resource<List<Repository>> =
+        remote.getCurrentUserRepos(params)
 }
