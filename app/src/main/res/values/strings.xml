@@ -19,4 +19,11 @@
     <string name="menuLabelFeed">Feed</string>
     <string name="menuLabelNotifications">Notifications</string>
     <string name="menuLabelProfile">Profile</string>
+
+    <!-- Profile fragment -->
+    <string name="labelUsername">\u0040%s</string>
+
+    <!-- Repository item -->
+    <string name="labelRepositoryLanguage">Language: %s</string>
+    <string name="labelRepositoryUpdatedDate">Updated: %s</string>
 </resources>

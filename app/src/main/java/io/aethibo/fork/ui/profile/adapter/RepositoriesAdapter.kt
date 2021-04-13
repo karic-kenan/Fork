@@ -8,12 +8,10 @@ package io.aethibo.fork.ui.profile.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import io.aethibo.domain.Repository
 import io.aethibo.fork.R
 
@@ -40,34 +38,39 @@ class RepositoriesAdapter : ListAdapter<Repository, RepositoriesAdapter.Reposito
             /**
              * Init views
              */
-            val name = itemView.findViewById<TextView>(R.id.tvRepoName)
-            val description = itemView.findViewById<TextView>(R.id.tvRepoDescription)
-            val language = itemView.findViewById<TextView>(R.id.tvRepoLanguage)
-            val updatedDate = itemView.findViewById<TextView>(R.id.tvRepoUpdated)
-            val forksCount = itemView.findViewById<TextView>(R.id.tvForksCount)
-            val watchersCount = itemView.findViewById<TextView>(R.id.tvWatchersCount)
-            val stargazersCount = itemView.findViewById<TextView>(R.id.tvStargazersCount)
-            val lock = itemView.findViewById<ImageView>(R.id.ivRepoLock)
+            val name = findViewById<TextView>(R.id.tvRepoName)
+            val description = findViewById<TextView>(R.id.tvRepoDescription)
+            val language = findViewById<TextView>(R.id.tvRepoLanguage)
+            val updatedDate = findViewById<TextView>(R.id.tvRepoUpdated)
+            val forksCount = findViewById<TextView>(R.id.tvForksCount)
+            val watchersCount = findViewById<TextView>(R.id.tvWatchersCount)
+            val stargazersCount = findViewById<TextView>(R.id.tvStargazersCount)
 
             /**
              * Init values
              */
             name.text = repository.name
             description.text = repository.description
-            language.text = "Language: ${repository.language}"
-            updatedDate.text = "Updated: ${repository.updatedAt}"
+            language.text = context.getString(R.string.labelRepositoryLanguage, repository.language)
+            updatedDate.text = context.getString(R.string.labelRepositoryUpdatedDate, repository.updatedAt)
             forksCount.text = repository.forksCount.toString()
             watchersCount.text = repository.watchersCount.toString()
             stargazersCount.text = repository.stargazersCount.toString()
 
-            when (repository.private) {
-                true -> lock.load(R.drawable.ic_lock) {
-                    crossfade(true)
-                }
-                false -> lock.load(R.drawable.ic_unlock) {
-                    crossfade(true)
+            this.setOnClickListener {
+                onRepositoryClickListener?.let { click ->
+                    click(repository)
                 }
             }
         }
+    }
+
+    /**
+     * Click listeners
+     */
+    private var onRepositoryClickListener: ((Repository) -> Unit)? = null
+
+    fun setOnRepositoryClickListener(listener: (Repository) -> Unit) {
+        onRepositoryClickListener = listener
     }
 }

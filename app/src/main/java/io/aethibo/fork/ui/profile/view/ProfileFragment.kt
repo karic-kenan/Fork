@@ -17,6 +17,7 @@ import io.aethibo.fork.ui.auth.utils.snackBar
 import io.aethibo.fork.ui.profile.adapter.RepositoriesAdapter
 import io.aethibo.fork.ui.profile.viewmodel.ProfileViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
@@ -35,6 +36,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewModel.getUsersRepositories(mapOf("sort" to "updated"))
 
         subscribeToObservers()
+        setupAdapterClickListeners()
+    }
+
+    private fun setupAdapterClickListeners() {
+        repositoryAdapter.setOnRepositoryClickListener { repository: Repository ->
+            Timber.d("Repository clicked: ${repository.name}")
+        }
     }
 
     private fun subscribeToObservers() {
@@ -82,7 +90,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
 
             tvProfileName.text = user.name
-            tvProfileUsername.text = "@${user.login}"
+            tvProfileUsername.text = getString(R.string.labelUsername, user.login)
             tvProfileBio.text = user.bio
             tvProfileLocation.text = user.location
             tvProfileReposCount.text = user.publicRepos.toString()
