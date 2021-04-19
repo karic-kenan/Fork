@@ -20,10 +20,13 @@
     <string name="menuLabelNotifications">Notifications</string>
     <string name="menuLabelProfile">Profile</string>
 
+    <!-- Profile menu -->
+    <string name="menuSignOut">Sign out</string>
+
     <!-- Profile fragment -->
     <string name="labelUsername">\u0040%s</string>
 
     <!-- Repository item -->
-    <string name="labelRepositoryLanguage">Language: %s</string>
-    <string name="labelRepositoryUpdatedDate">Updated: %s</string>
+    <string name="labelRepositoryLanguage"><b>Language</b>: %s</string>
+    <string name="labelRepositoryUpdatedDate"><b>Updated</b>: %s</string>
 </resources>

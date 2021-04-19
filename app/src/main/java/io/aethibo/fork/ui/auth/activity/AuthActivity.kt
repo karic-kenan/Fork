@@ -5,9 +5,9 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import io.aethibo.fork.ui.MainActivity
 import io.aethibo.fork.R
 import io.aethibo.fork.framework.utils.AppConst
+import io.aethibo.fork.ui.MainActivity
 import io.aethibo.fork.ui.auth.view.AuthFragment
 import org.koin.android.ext.android.inject
 
