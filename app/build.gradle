@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
 
@@ -59,6 +60,7 @@ dependencies {
     implementation libs.swipeRefreshLayout
     implementation libs.securityCrypto
     implementation libs.legacySupport
+    implementation libs.lottie
 
     // Coroutines
     implementation libs.coroutinesCore

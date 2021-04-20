@@ -5,5 +5,5 @@ import io.aethibo.fork.framework.datasource.MainRemoteDataSourceImpl
 import org.koin.dsl.module
 
 val dataSourcesModule = module {
-    single<MainRemoteDataSource> { MainRemoteDataSourceImpl(get(), get()) }
+    single<MainRemoteDataSource> { MainRemoteDataSourceImpl(get(), get(), get(), get()) }
 }

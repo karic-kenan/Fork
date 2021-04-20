@@ -1,9 +1,6 @@
 package io.aethibo.fork.framework.di
 
-import io.aethibo.usecases.GetAccessTokenUseCase
-import io.aethibo.usecases.GetAccessTokenUseCaseImpl
-import io.aethibo.usecases.GetCurrentUserUseCase
-import io.aethibo.usecases.GetCurrentUserUseCaseImpl
+import io.aethibo.usecases.*
 import org.koin.dsl.module
 
 val useCasesModule = module {
@@ -14,4 +11,6 @@ val useCasesModule = module {
     single<GetAccessTokenUseCase> { GetAccessTokenUseCaseImpl(get()) }
 
     single<GetCurrentUserUseCase> { GetCurrentUserUseCaseImpl(get()) }
+
+    single<GetUsersRepositoriesUseCase> { GetUsersRepositoriesUseCaseImpl(get()) }
 }
