@@ -60,6 +60,7 @@ dependencies {
     implementation libs.swipeRefreshLayout
     implementation libs.securityCrypto
     implementation libs.legacySupport
+    implementation libs.lottie
 
     // Coroutines
     implementation libs.coroutinesCore

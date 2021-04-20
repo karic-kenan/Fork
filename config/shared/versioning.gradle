@@ -46,6 +46,7 @@ ext.versions = [
         swipeRefreshLayoutVersion : '1.1.0',
         securityCryptoVersion     : '1.1.0-alpha02',
         legacySupportVersion      : '1.0.0',
+        lottieVersion             : '3.7.0',
 
         /**
          * Architecture components
@@ -115,6 +116,7 @@ ext.libs = [
         swipeRefreshLayout  : "androidx.swiperefreshlayout:swiperefreshlayout:${versions.swipeRefreshLayoutVersion}",
         securityCrypto      : "androidx.security:security-crypto-ktx:${versions.securityCryptoVersion}",
         legacySupport       : "androidx.legacy:legacy-support-v4:${versions.legacySupportVersion}",
+        lottie              : "com.airbnb.android:lottie:${versions.lottieVersion}",
 
         /**
          * Coroutines
