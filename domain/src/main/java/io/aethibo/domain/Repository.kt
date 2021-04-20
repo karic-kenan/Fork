@@ -15,5 +15,6 @@ data class Repository(
         val forksCount: Int = 0,
         val licence: String = "",
         val createdAt: String = "",
-        val updatedAt: String = ""
+        val updatedAt: String = "",
+        val owner: String = ""
 )

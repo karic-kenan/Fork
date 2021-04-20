@@ -22,7 +22,8 @@ class RepositoryMapper : EntityMapper<RepositoryResponse, Repository> {
             forksCount = entity.forksCount,
             licence = entity.license.name,
             createdAt = entity.createdAt,
-            updatedAt = entity.updatedAt
+            updatedAt = entity.updatedAt,
+            owner = entity.owner.login
         )
 
     override fun mapToEntity(domainModel: Repository): RepositoryResponse =
