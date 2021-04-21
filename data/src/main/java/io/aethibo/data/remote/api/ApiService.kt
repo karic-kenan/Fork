@@ -54,14 +54,12 @@ interface ApiService {
      * URL: https://docs.github.com/en/rest/reference/activity#list-events-received-by-the-authenticated-user
      */
     @GET("users/{username}/received_events?per_page=10")
-    fun getEvents(
-        @Path("username") username: String
-    ): List<EventsResponse>
+    suspend fun getEvents(@Path("username") username: String): List<EventsResponse>
 
     /**
      * Search repositories
      * URL: https://docs.github.com/en/rest/reference/search#search-repositories
      */
     @GET("search/repositories")
-    fun searchRepositories(@QueryMap params: Map<String, String>): List<RepositoryResponse>
+    suspend fun searchRepositories(@QueryMap params: Map<String, String>): List<RepositoryResponse>
 }

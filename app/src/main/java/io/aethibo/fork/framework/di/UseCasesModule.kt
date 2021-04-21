@@ -13,4 +13,9 @@ val useCasesModule = module {
     single<GetCurrentUserUseCase> { GetCurrentUserUseCaseImpl(get()) }
 
     single<GetUsersRepositoriesUseCase> { GetUsersRepositoriesUseCaseImpl(get()) }
+
+    /**
+     * Get events
+     */
+    single<GetEventsUseCase> { GetEventsUseCaseImpl(get()) }
 }

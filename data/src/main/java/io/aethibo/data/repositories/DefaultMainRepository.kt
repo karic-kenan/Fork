@@ -5,6 +5,7 @@ import io.aethibo.data.utils.Resource
 import io.aethibo.domain.Repository
 import io.aethibo.domain.User
 import io.aethibo.domain.response.AccessTokenResponse
+import io.aethibo.domain.response.EventsResponse
 
 class DefaultMainRepository(private val remote: MainRemoteDataSource) : MainRepository {
 
@@ -16,4 +17,7 @@ class DefaultMainRepository(private val remote: MainRemoteDataSource) : MainRepo
 
     override suspend fun getCurrentUserRepos(params: Map<String, String>): Resource<List<Repository>> =
         remote.getCurrentUserRepos(params)
+
+    override suspend fun getEvents(username: String): Resource<List<EventsResponse>> =
+        remote.getEvents(username)
 }

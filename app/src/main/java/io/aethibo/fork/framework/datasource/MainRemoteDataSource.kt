@@ -10,6 +10,7 @@ import io.aethibo.data.utils.safeCall
 import io.aethibo.domain.Repository
 import io.aethibo.domain.User
 import io.aethibo.domain.response.AccessTokenResponse
+import io.aethibo.domain.response.EventsResponse
 import io.aethibo.domain.response.RepositoryResponse
 import io.aethibo.domain.response.UserResponse
 import kotlinx.coroutines.Dispatchers
@@ -48,6 +49,15 @@ class MainRemoteDataSourceImpl(
                 val result = repositoryMapper.mapFromEntityList(response)
 
                 Resource.Success(result)
+            }
+        }
+
+    override suspend fun getEvents(username: String): Resource<List<EventsResponse>> =
+        withContext(Dispatchers.IO) {
+            safeCall {
+                val response: List<EventsResponse> = service.getEvents(username)
+
+                Resource.Success(response)
             }
         }
 }

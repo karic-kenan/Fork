@@ -11,5 +11,6 @@ enum class EventType {
     PushEvent,
     PublicEvent,
     WatchEvent,
-    CreateEvent
+    CreateEvent,
+    ForkEvent
 }
