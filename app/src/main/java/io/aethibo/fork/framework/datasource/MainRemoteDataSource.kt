@@ -9,10 +9,7 @@ import io.aethibo.data.utils.Resource
 import io.aethibo.data.utils.safeCall
 import io.aethibo.domain.Repository
 import io.aethibo.domain.User
-import io.aethibo.domain.response.AccessTokenResponse
-import io.aethibo.domain.response.EventsResponse
-import io.aethibo.domain.response.RepositoryResponse
-import io.aethibo.domain.response.UserResponse
+import io.aethibo.domain.response.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -56,6 +53,15 @@ class MainRemoteDataSourceImpl(
         withContext(Dispatchers.IO) {
             safeCall {
                 val response: List<EventsResponse> = service.getEvents(username)
+
+                Resource.Success(response)
+            }
+        }
+
+    override suspend fun getNotifications(): Resource<List<NotificationResponse>> =
+        withContext(Dispatchers.IO) {
+            safeCall {
+                val response: List<NotificationResponse> = service.getNotifications()
 
                 Resource.Success(response)
             }

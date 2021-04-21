@@ -5,6 +5,7 @@ import io.aethibo.domain.Repository
 import io.aethibo.domain.User
 import io.aethibo.domain.response.AccessTokenResponse
 import io.aethibo.domain.response.EventsResponse
+import io.aethibo.domain.response.NotificationResponse
 
 interface MainRemoteDataSource {
 
@@ -13,12 +14,15 @@ interface MainRemoteDataSource {
      */
     suspend fun getAccessToken(params: Map<String, String>): Resource<AccessTokenResponse>
 
-    // Current logged in user
+    // User
     suspend fun getUserInfo(): Resource<User>
 
-    // Current user repos
+    // User repositories
     suspend fun getCurrentUserRepos(params: Map<String, String>): Resource<List<Repository>>
 
-    // Current user events
+    // Events
     suspend fun getEvents(username: String): Resource<List<EventsResponse>>
+
+    // Notifications
+    suspend fun getNotifications(): Resource<List<NotificationResponse>>
 }

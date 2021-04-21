@@ -18,4 +18,9 @@ val useCasesModule = module {
      * Get events
      */
     single<GetEventsUseCase> { GetEventsUseCaseImpl(get()) }
+
+    /**
+     * Get notifications
+     */
+    single<GetNotificationsUseCase> { GetNotificationsUseCaseImpl(get()) }
 }

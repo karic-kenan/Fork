@@ -6,6 +6,7 @@ import io.aethibo.domain.Repository
 import io.aethibo.domain.User
 import io.aethibo.domain.response.AccessTokenResponse
 import io.aethibo.domain.response.EventsResponse
+import io.aethibo.domain.response.NotificationResponse
 
 class DefaultMainRepository(private val remote: MainRemoteDataSource) : MainRepository {
 
@@ -20,4 +21,7 @@ class DefaultMainRepository(private val remote: MainRemoteDataSource) : MainRepo
 
     override suspend fun getEvents(username: String): Resource<List<EventsResponse>> =
         remote.getEvents(username)
+
+    override suspend fun getNotifications(): Resource<List<NotificationResponse>> =
+        remote.getNotifications()
 }
