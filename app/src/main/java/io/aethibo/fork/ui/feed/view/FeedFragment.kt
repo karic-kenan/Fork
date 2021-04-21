@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.asLiveData
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.aethibo.data.utils.Resource
+import io.aethibo.domain.User
 import io.aethibo.domain.response.EventsResponse
 import io.aethibo.fork.R
 import io.aethibo.fork.databinding.FragmentFeedBinding
@@ -14,7 +15,6 @@ import io.aethibo.fork.ui.auth.utils.snackBar
 import io.aethibo.fork.ui.feed.adapter.FeedAdapter
 import io.aethibo.fork.ui.feed.viewmodel.FeedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class FeedFragment : Fragment(R.layout.fragment_feed) {
 
@@ -29,8 +29,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // hardcoded for now, we'll save username in shared prefs
-        viewModel.getEvents("primepixel")
+        viewModel.getUserInformation()
 
         subscribeToObservers()
         setupAdapterClickListeners()
@@ -59,10 +58,25 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
                     }
                     is Resource.Failure -> {
                         binding.pbEvents.isVisible = false
-                        Timber.e("Error: ${resource.message}")
                         snackBar("Error: ${resource.message ?: "Unknown error occurred"}")
                     }
                 }
             }
+
+        viewModel.userStatus.asLiveData().observe(viewLifecycleOwner) { resource: Resource<User> ->
+            when (resource) {
+                is Resource.Loading -> binding.pbEvents.isVisible = true
+                is Resource.Success -> {
+                    binding.pbEvents.isVisible = false
+
+                    val result: User = resource.data as User
+                    viewModel.getEvents(result.login)
+                }
+                is Resource.Failure -> {
+                    binding.pbEvents.isVisible = false
+                    snackBar("Error: ${resource.message ?: "Unknown error occurred"}")
+                }
+            }
+        }
     }
 }

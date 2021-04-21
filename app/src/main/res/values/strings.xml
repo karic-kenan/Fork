@@ -29,4 +29,14 @@
     <!-- Repository item -->
     <string name="labelRepositoryLanguage"><b>Language</b>: %s</string>
     <string name="labelRepositoryUpdatedDate"><b>Updated</b>: %s</string>
+
+    <!-- Event item -->
+    <string name="labelEventTypeTitle"><b>Event</b>: %s</string>
+    <string name="labelEventTypeCreate"><b>%s</b> created repository: <b>%s</b></string>
+    <string name="labelEventTypeIssueComment"><b>%s</b> created comment on issue in repository: <b>%s</b></string>
+    <string name="labelEventTypeIssue"><b>%s</b> created issue on repository: <b>%s</b></string>
+    <string name="labelEventTypePublic"><b>%s</b> made repository <b>%s</b> public: %s</string>
+    <string name="labelEventTypePush"><b>%s</b>  pushed commit to repository: <b>%s</b></string>
+    <string name="labelEventTypeWatch"><b>%s</b> is watching repository: <b>%s</b></string>
+    <string name="labelEventTypeFork"><b>%s</b> forked repository: <b>%s</b></string>
 </resources>

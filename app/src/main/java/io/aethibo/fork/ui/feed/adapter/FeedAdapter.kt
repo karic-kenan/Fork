@@ -48,38 +48,46 @@ class FeedAdapter : ListAdapter<EventsResponse, FeedAdapter.FeedViewHolder>(Comp
             /**
              * Assign values
              */
-            title.text = "Event: ${event.type}"
+            title.text = context.getString(R.string.labelEventTypeTitle, event.type)
             date.text = event.createdAt
 
             when (event.type) {
-                EventType.CreateEvent.name -> {
-                    description.text =
-                        "${event.actor.displayLogin} created repository: ${event.repo.name}"
-                }
-                EventType.IssueCommentEvent.name -> {
-                    description.text =
-                        "${event.actor.displayLogin} created comment on issue in repository: ${event.repo.name}"
-                }
-                EventType.IssueEvent.name -> {
-                    description.text =
-                        "${event.actor.displayLogin} created Issue on repository: ${event.repo.name}"
-                }
-                EventType.PublicEvent.name -> {
-                    description.text =
-                        "${event.actor.displayLogin} made repository: ${event.repo.name} public: ${event.public}"
-                }
-                EventType.PushEvent.name -> {
-                    description.text =
-                        "${event.actor.displayLogin} pushed commit to repository: ${event.repo.name}"
-                }
-                EventType.WatchEvent.name -> {
-                    description.text =
-                        "${event.actor.displayLogin} is watching repository: ${event.repo.name}"
-                }
-                EventType.ForkEvent.name -> {
-                    description.text =
-                        "${event.actor.displayLogin} forked repository: ${event.repo.name}"
-                }
+                EventType.CreateEvent.name -> description.text = context.getString(
+                    R.string.labelEventTypeCreate,
+                    event.actor.displayLogin,
+                    event.repo.name
+                )
+                EventType.IssueCommentEvent.name -> description.text = context.getString(
+                    R.string.labelEventTypeIssueComment,
+                    event.actor.displayLogin,
+                    event.repo.name
+                )
+                EventType.IssueEvent.name -> description.text = context.getString(
+                    R.string.labelEventTypeIssue,
+                    event.actor.displayLogin,
+                    event.repo.name
+                )
+                EventType.PublicEvent.name -> description.text = context.getString(
+                    R.string.labelEventTypePublic,
+                    event.actor.displayLogin,
+                    event.repo.name,
+                    event.public.toString()
+                )
+                EventType.PushEvent.name -> description.text = context.getString(
+                    R.string.labelEventTypePush,
+                    event.actor.displayLogin,
+                    event.repo.name
+                )
+                EventType.WatchEvent.name -> description.text = context.getString(
+                    R.string.labelEventTypeWatch,
+                    event.actor.displayLogin,
+                    event.repo.name
+                )
+                EventType.ForkEvent.name -> description.text = context.getString(
+                    R.string.labelEventTypeFork,
+                    event.actor.displayLogin,
+                    event.repo.name
+                )
             }
 
             setOnClickListener {
