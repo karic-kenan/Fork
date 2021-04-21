@@ -13,6 +13,7 @@ class RepositoryMapper : EntityMapper<RepositoryResponse, Repository> {
 
     override fun mapFromEntity(entity: RepositoryResponse): Repository =
         Repository(
+            id = entity.id.toString(),
             name = entity.name,
             private = entity.private,
             description = entity.description,
@@ -23,7 +24,8 @@ class RepositoryMapper : EntityMapper<RepositoryResponse, Repository> {
             licence = entity.license.name,
             createdAt = entity.createdAt,
             updatedAt = entity.updatedAt,
-            owner = entity.owner.login
+            owner = entity.owner.login,
+            avatarUrl = entity.owner.avatarUrl
         )
 
     override fun mapToEntity(domainModel: Repository): RepositoryResponse =

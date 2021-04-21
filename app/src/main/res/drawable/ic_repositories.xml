@@ -1,0 +1,18 @@
+<!--
+  ~ Created by Karic Kenan on 21.4.2021
+  ~ Copyright (c) 2021 . All rights reserved.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="29dp"
+    android:height="29dp"
+    android:viewportWidth="29"
+    android:viewportHeight="29">
+  <path
+      android:strokeWidth="1"
+      android:pathData="M4.7436,19.6077L14.7437,24.6077L24.7437,19.6077M4.7436,14.6077L14.7437,19.6077L24.7437,14.6077M14.7437,4.6077L4.7436,9.6077L14.7437,14.6077L24.7437,9.6077L14.7437,4.6077Z"
+      android:strokeLineJoin="round"
+      android:fillColor="#00000000"
+      android:strokeColor="#999999"
+      android:strokeLineCap="round"/>
+</vector>

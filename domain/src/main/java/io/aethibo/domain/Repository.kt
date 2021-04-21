@@ -6,6 +6,7 @@
 package io.aethibo.domain
 
 data class Repository(
+        val id: String = "",
         val name: String = "",
         val private: Boolean = false,
         val description: String = "",
@@ -16,5 +17,6 @@ data class Repository(
         val licence: String = "",
         val createdAt: String = "",
         val updatedAt: String = "",
-        val owner: String = ""
+        val owner: String = "",
+        val avatarUrl: String = ""
 )

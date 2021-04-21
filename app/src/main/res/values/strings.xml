@@ -43,4 +43,10 @@
     <string name="labelEventTypePush"><b>%s</b>  pushed commit to repository: <b>%s</b></string>
     <string name="labelEventTypeWatch"><b>%s</b> is watching repository: <b>%s</b></string>
     <string name="labelEventTypeFork"><b>%s</b> forked repository: <b>%s</b></string>
+
+    <!-- Home fragment -->
+    <string name="labelHomeTitle">Welcome to Fork, your own simple GitHub android client</string>
+    <string name="labelHomeSubtitle">Select one of the options bellow to get insight into your work in more detail, as well as explore rest of the screens</string>
+    <string name="labelBtnRepositories"><b><big>Repositories (browser)</big></b><br /> - <small>Check out your repositories</small></string>
+    <string name="labelBtnOrganizations"><b><big>Organizations (browser)</big></b><br /> - <small>See all organizations you\'re part of</small></string>
 </resources>

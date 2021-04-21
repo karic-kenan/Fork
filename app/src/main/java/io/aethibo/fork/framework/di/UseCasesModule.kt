@@ -33,4 +33,9 @@ val useCasesModule = module {
      * Get repository events
      */
     single<GetRepositoryEventsUseCase> { GetRepositoryEventsUseCaseImpl(get()) }
+
+    /**
+     * Search repositories
+     */
+    single<GetRepositoriesUseCase> { GetRepositoriesUseCaseImpl(get()) }
 }

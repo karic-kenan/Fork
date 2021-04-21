@@ -36,4 +36,7 @@ interface MainRepository {
         repository: String,
         params: Map<String, String>
     ): Resource<List<RepositoryEventsResponse>>
+
+    // Search repositories
+    suspend fun searchRepositories(params: Map<String, String>): Resource<List<Repository>>
 }

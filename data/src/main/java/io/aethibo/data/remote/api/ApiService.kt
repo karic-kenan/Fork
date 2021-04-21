@@ -60,6 +60,6 @@ interface ApiService {
      * Search repositories
      * URL: https://docs.github.com/en/rest/reference/search#search-repositories
      */
-    @GET("search/repositories")
+    @GET("search/repositories?sort=stars")
     suspend fun searchRepositories(@QueryMap params: Map<String, String>): List<RepositoryResponse>
 }

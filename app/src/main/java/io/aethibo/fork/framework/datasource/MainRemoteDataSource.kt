@@ -85,9 +85,20 @@ class MainRemoteDataSourceImpl(
         params: Map<String, String>
     ): Resource<List<RepositoryEventsResponse>> = withContext(Dispatchers.IO) {
         safeCall {
-            val response: List<RepositoryEventsResponse> = service.getRepositoryEvents(owner, repository, params)
+            val response: List<RepositoryEventsResponse> =
+                service.getRepositoryEvents(owner, repository, params)
 
             Resource.Success(response)
         }
     }
+
+    override suspend fun searchRepositories(params: Map<String, String>): Resource<List<Repository>> =
+        withContext(Dispatchers.IO) {
+            safeCall {
+                val response: List<RepositoryResponse> = service.searchRepositories(params)
+                val result: List<Repository> = repositoryMapper.mapFromEntityList(response)
+
+                Resource.Success(result)
+            }
+        }
 }
