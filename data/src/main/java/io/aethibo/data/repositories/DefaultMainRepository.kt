@@ -4,9 +4,7 @@ import io.aethibo.data.datasource.MainRemoteDataSource
 import io.aethibo.data.utils.Resource
 import io.aethibo.domain.Repository
 import io.aethibo.domain.User
-import io.aethibo.domain.response.AccessTokenResponse
-import io.aethibo.domain.response.EventsResponse
-import io.aethibo.domain.response.NotificationResponse
+import io.aethibo.domain.response.*
 
 class DefaultMainRepository(private val remote: MainRemoteDataSource) : MainRepository {
 
@@ -24,4 +22,16 @@ class DefaultMainRepository(private val remote: MainRemoteDataSource) : MainRepo
 
     override suspend fun getNotifications(): Resource<List<NotificationResponse>> =
         remote.getNotifications()
+
+    override suspend fun getSingleRepository(
+        owner: String,
+        repository: String
+    ): Resource<Repository> = remote.getSingleRepository(owner, repository)
+
+    override suspend fun getRepositoryEvents(
+        owner: String,
+        repository: String,
+        params: Map<String, String>
+    ): Resource<List<RepositoryEventsResponse>> =
+        remote.getRepositoryEvents(owner, repository, params)
 }

@@ -1,6 +1,7 @@
 package io.aethibo.fork.framework.di
 
 import io.aethibo.fork.ui.auth.viewmodel.AuthViewModel
+import io.aethibo.fork.ui.detail.viewmodel.DetailRepositoryViewModel
 import io.aethibo.fork.ui.feed.viewmodel.FeedViewModel
 import io.aethibo.fork.ui.notifications.viewmodel.NotificationsViewModel
 import io.aethibo.fork.ui.profile.viewmodel.ProfileViewModel
@@ -13,4 +14,5 @@ val viewModelModule = module {
     viewModel { ProfileViewModel(get(), get()) }
     viewModel { FeedViewModel(get(), get()) }
     viewModel { NotificationsViewModel(get()) }
+    viewModel { DetailRepositoryViewModel(get(), get()) }
 }

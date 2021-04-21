@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Karic Kenan on 21.4.2021
+  ~ Copyright (c) 2021 . All rights reserved.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/tvRepoEventAvatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvRepoEventUsername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/open_sans_regular"
+        android:textColor="?android:attr/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvRepoEventAvatar"
+        app:layout_constraintTop_toTopOf="@+id/tvRepoEventAvatar"
+        tools:text="username" />
+
+    <TextView
+        android:id="@+id/tvRepoEventDate"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/open_sans_light"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvRepoEventUsername"
+        app:layout_constraintStart_toStartOf="@+id/tvRepoEventUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepoEventUsername"
+        tools:text="date" />
+
+    <TextView
+        android:id="@+id/tvRepoEventTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:textColor="?android:attr/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/tvRepoEventDate"
+        app:layout_constraintStart_toStartOf="@+id/tvRepoEventDate"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepoEventDate"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/tvRepoEventDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/open_sans_light"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvRepoEventTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvRepoEventTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepoEventTitle"
+        tools:text="Voluptas quaerat aliquid ut nostrum nemo. Nihil quisquam necessitatibus quae doloribus reprehenderit ..." />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvRepoEventDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepoEventDescription" />
+</androidx.constraintlayout.widget.ConstraintLayout>

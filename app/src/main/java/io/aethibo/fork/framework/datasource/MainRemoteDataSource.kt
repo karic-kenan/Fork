@@ -66,4 +66,28 @@ class MainRemoteDataSourceImpl(
                 Resource.Success(response)
             }
         }
+
+    override suspend fun getSingleRepository(
+        owner: String,
+        repository: String
+    ): Resource<Repository> = withContext(Dispatchers.IO) {
+        safeCall {
+            val response: RepositoryResponse = service.getSingleRepository(owner, repository)
+            val result: Repository = repositoryMapper.mapFromEntity(response)
+
+            Resource.Success(result)
+        }
+    }
+
+    override suspend fun getRepositoryEvents(
+        owner: String,
+        repository: String,
+        params: Map<String, String>
+    ): Resource<List<RepositoryEventsResponse>> = withContext(Dispatchers.IO) {
+        safeCall {
+            val response: List<RepositoryEventsResponse> = service.getRepositoryEvents(owner, repository, params)
+
+            Resource.Success(response)
+        }
+    }
 }

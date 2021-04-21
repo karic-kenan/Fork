@@ -27,8 +27,12 @@
     <string name="labelUsername">\u0040%s</string>
 
     <!-- Repository item -->
+    <string name="labelRepositoryOwner"><b>Owner</b>: %s</string>
     <string name="labelRepositoryLanguage"><b>Language</b>: %s</string>
     <string name="labelRepositoryUpdatedDate"><b>Updated</b>: %s</string>
+    <string name="labelRepositoryForks"><b>Forks</b>: %s</string>
+    <string name="labelRepositoryWatchers"><b>Watchers</b>: %s</string>
+    <string name="labelRepositoryStars"><b>Stargazers</b>: %s</string>
 
     <!-- Event item -->
     <string name="labelEventTypeTitle"><b>Event</b>: %s</string>

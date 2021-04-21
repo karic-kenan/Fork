@@ -23,4 +23,14 @@ val useCasesModule = module {
      * Get notifications
      */
     single<GetNotificationsUseCase> { GetNotificationsUseCaseImpl(get()) }
+
+    /**
+     * Get single repository
+     */
+    single<GetRepositoryUseCase> { GetRepositoryUseCaseImpl(get()) }
+
+    /**
+     * Get repository events
+     */
+    single<GetRepositoryEventsUseCase> { GetRepositoryEventsUseCaseImpl(get()) }
 }

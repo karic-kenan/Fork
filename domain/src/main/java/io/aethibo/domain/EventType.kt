@@ -6,7 +6,7 @@
 package io.aethibo.domain
 
 enum class EventType {
-    IssueEvent,
+    IssuesEvent,
     IssueCommentEvent,
     PushEvent,
     PublicEvent,

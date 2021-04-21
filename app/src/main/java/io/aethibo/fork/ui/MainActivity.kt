@@ -24,17 +24,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupNavigation() {
         navigator = BottomNavigator.onCreate(
-                activity = this,
-                rootFragmentsFactory = mapOf(
-                        R.id.home to { HomeFragment.newInstance() },
-                        R.id.search to { SearchFragment.newInstance() },
-                        R.id.feed to { FeedFragment.newInstance() },
-                        R.id.notifications to { NotificationsFragment.newInstance() },
-                        R.id.profile to { ProfileFragment.newInstance() },
-                ),
-                defaultTab = R.id.home,
-                fragmentContainer = R.id.fragment_container,
-                bottomNavigationView = findViewById(R.id.navigation)
+            activity = this,
+            rootFragmentsFactory = mapOf(
+                R.id.home to { HomeFragment.newInstance() },
+                R.id.search to { SearchFragment.newInstance() },
+                R.id.feed to { FeedFragment.newInstance() },
+                R.id.notifications to { NotificationsFragment.newInstance() },
+                R.id.profile to { ProfileFragment.newInstance() },
+            ),
+            defaultTab = R.id.home,
+            fragmentContainer = R.id.fragment_container,
+            bottomNavigationView = findViewById(R.id.navigation)
         )
+    }
+
+    override fun onBackPressed() {
+        if (!navigator.pop())
+            super.onBackPressed()
     }
 }

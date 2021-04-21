@@ -6,6 +6,7 @@ import io.aethibo.domain.User
 import io.aethibo.domain.response.AccessTokenResponse
 import io.aethibo.domain.response.EventsResponse
 import io.aethibo.domain.response.NotificationResponse
+import io.aethibo.domain.response.RepositoryEventsResponse
 
 interface MainRepository {
 
@@ -25,4 +26,14 @@ interface MainRepository {
 
     // Notifications
     suspend fun getNotifications(): Resource<List<NotificationResponse>>
+
+    // Single repository
+    suspend fun getSingleRepository(owner: String, repository: String): Resource<Repository>
+
+    // Repository events
+    suspend fun getRepositoryEvents(
+        owner: String,
+        repository: String,
+        params: Map<String, String>
+    ): Resource<List<RepositoryEventsResponse>>
 }

@@ -1,5 +1,6 @@
 package io.aethibo.fork.ui.profile.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -12,26 +13,34 @@ import androidx.lifecycle.asLiveData
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.pandora.bottomnavigator.BottomNavigator
 import io.aethibo.data.utils.Resource
 import io.aethibo.domain.Repository
 import io.aethibo.domain.User
 import io.aethibo.fork.R
 import io.aethibo.fork.databinding.FragmentProfileBinding
+import io.aethibo.fork.framework.domain.RepositoryDetailRequest
 import io.aethibo.fork.ui.auth.activity.AuthActivity
 import io.aethibo.fork.ui.auth.utils.snackBar
+import io.aethibo.fork.ui.detail.view.DetailRepositoryFragment
 import io.aethibo.fork.ui.profile.adapter.RepositoriesAdapter
 import io.aethibo.fork.ui.profile.viewmodel.ProfileViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private val viewModel: ProfileViewModel by viewModel()
     private val binding: FragmentProfileBinding by viewBinding()
     private val repositoryAdapter: RepositoriesAdapter by lazy { RepositoriesAdapter() }
+    private lateinit var navigator: BottomNavigator
 
     companion object {
         fun newInstance() = ProfileFragment()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        navigator = BottomNavigator.provide(requireActivity())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,7 +56,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun setupAdapterClickListeners() {
         repositoryAdapter.setOnRepositoryClickListener { repository: Repository ->
-            Timber.d("Repository clicked: ${repository.name}")
+            val repositoryInfo = RepositoryDetailRequest(repository.owner, repository.name)
+            navigator.addFragment(DetailRepositoryFragment.newInstance(repositoryInfo))
         }
     }
 

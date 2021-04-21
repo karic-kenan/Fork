@@ -3,53 +3,69 @@
  * Copyright (c) 2021 . All rights reserved.
  */
 
-package io.aethibo.fork.ui.feed.adapter
+package io.aethibo.fork.ui.detail.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import io.aethibo.domain.EventType
-import io.aethibo.domain.response.EventsResponse
+import io.aethibo.domain.response.RepositoryEventsResponse
 import io.aethibo.fork.R
 
-class FeedAdapter : ListAdapter<EventsResponse, FeedAdapter.FeedViewHolder>(Companion) {
+class RepositoryDetailAdapter : ListAdapter<RepositoryEventsResponse, RepositoryDetailAdapter.RepositoryDetailViewHolder>(Companion) {
 
-    companion object : DiffUtil.ItemCallback<EventsResponse>() {
-        override fun areItemsTheSame(oldItem: EventsResponse, newItem: EventsResponse): Boolean =
-            oldItem.id == newItem.id
+    companion object : DiffUtil.ItemCallback<RepositoryEventsResponse>() {
+        override fun areItemsTheSame(
+            oldItem: RepositoryEventsResponse,
+            newItem: RepositoryEventsResponse
+        ): Boolean = oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: EventsResponse, newItem: EventsResponse): Boolean =
-            oldItem.hashCode() == newItem.hashCode()
+        override fun areContentsTheSame(
+            oldItem: RepositoryEventsResponse,
+            newItem: RepositoryEventsResponse
+        ): Boolean = oldItem.hashCode() == newItem.hashCode()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_event, parent, false)
-        return FeedViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryDetailViewHolder {
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_repo_event, parent, false)
+        return RepositoryDetailViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RepositoryDetailViewHolder, position: Int) {
         holder.bind(getItem(position) ?: return)
     }
 
-    inner class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(event: EventsResponse) = with(itemView) {
+    inner class RepositoryDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(event: RepositoryEventsResponse) = with(itemView) {
 
             /**
-             * Init view
+             * Init views
              */
-            val title = findViewById<TextView>(R.id.tvEventItemTitle)
-            val description = findViewById<TextView>(R.id.tvEventItemDescription)
-            val date = findViewById<TextView>(R.id.tvEventItemDate)
+            val avatar = findViewById<ImageView>(R.id.tvRepoEventAvatar)
+            val username = findViewById<TextView>(R.id.tvRepoEventUsername)
+            val date = findViewById<TextView>(R.id.tvRepoEventDate)
+            val title = findViewById<TextView>(R.id.tvRepoEventTitle)
+            val description = findViewById<TextView>(R.id.tvRepoEventDescription)
 
             /**
-             * Assign values
+             * Set values
              */
-            title.text = context.getString(R.string.labelEventTypeTitle, event.type)
+            avatar.load(event.actor.avatarUrl) {
+                crossfade(true)
+                transformations(CircleCropTransformation())
+            }
+
+            username.text = event.actor.displayLogin
             date.text = event.createdAt
+            title.text = event.type
 
             when (event.type) {
                 EventType.CreateEvent.name -> description.text = context.getString(
@@ -101,9 +117,9 @@ class FeedAdapter : ListAdapter<EventsResponse, FeedAdapter.FeedViewHolder>(Comp
     /**
      * Click listeners
      */
-    private var onEventClickListener: ((EventsResponse) -> Unit)? = null
+    private var onEventClickListener: ((RepositoryEventsResponse) -> Unit)? = null
 
-    fun setOnEventItemClickListener(listener: (EventsResponse) -> Unit) {
+    fun setOnEventItemClickListener(listener: (RepositoryEventsResponse) -> Unit) {
         onEventClickListener = listener
     }
 }
