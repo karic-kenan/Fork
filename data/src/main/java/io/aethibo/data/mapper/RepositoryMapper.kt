@@ -21,7 +21,6 @@ class RepositoryMapper : EntityMapper<RepositoryResponse, Repository> {
             watchersCount = entity.watchersCount,
             stargazersCount = entity.stargazersCount,
             forksCount = entity.forksCount,
-            licence = entity.license.name,
             createdAt = entity.createdAt,
             updatedAt = entity.updatedAt,
             owner = entity.owner.login,

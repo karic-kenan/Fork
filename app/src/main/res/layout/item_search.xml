@@ -3,81 +3,102 @@
   ~ Copyright (c) 2021 . All rights reserved.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_weight="0.2"
+        app:layout_constraintBottom_toTopOf="@+id/tvRepoDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvRepoName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/ivAvatar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="0.2"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/tvRepoName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0.8"
-            android:fontFamily="@font/open_sans_semi_bold"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="18sp"
-            tools:text="Title" />
-    </LinearLayout>
+        android:layout_weight="0.8"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivAvatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivAvatar"
+        app:layout_constraintTop_toTopOf="@+id/ivAvatar"
+        tools:text="Title" />
 
     <TextView
         android:id="@+id/tvRepoDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="?android:attr/textColorSecondary"
+        app:layout_constraintBottom_toTopOf="@+id/tvRepoOwner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivAvatar"
         tools:text="Voluptas quaerat aliquid ut nostrum nemo. Nihil quisquam necessitatibus quae doloribus reprehenderit minima est. " />
 
     <TextView
         android:id="@+id/tvRepoOwner"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="?android:attr/textColorSecondary"
+        app:layout_constraintBottom_toTopOf="@+id/tvRepoLanguage"
+        app:layout_constraintEnd_toEndOf="@+id/tvRepoDescription"
+        app:layout_constraintStart_toStartOf="@+id/tvRepoDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepoDescription"
         tools:text="Owner: name" />
 
     <TextView
         android:id="@+id/tvRepoLanguage"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="?android:attr/textColorSecondary"
+        app:layout_constraintBottom_toTopOf="@+id/tvRepoUpdated"
+        app:layout_constraintEnd_toEndOf="@+id/tvRepoOwner"
+        app:layout_constraintStart_toStartOf="@+id/tvRepoOwner"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepoOwner"
         tools:text="Language: name" />
 
     <TextView
         android:id="@+id/tvRepoUpdated"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="?android:attr/textColorSecondary"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/tvRepoLanguage"
+        app:layout_constraintStart_toStartOf="@+id/tvRepoLanguage"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepoLanguage"
         tools:text="Updated: name" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_margin="16dp"
-        android:background="?android:attr/listDivider" />
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvRepoUpdated"
+        app:layout_constraintStart_toStartOf="@+id/tvRepoUpdated"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepoUpdated" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

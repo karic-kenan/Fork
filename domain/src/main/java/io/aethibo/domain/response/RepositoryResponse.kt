@@ -87,10 +87,9 @@ data class RepositoryResponse(
         val keysUrl: String = "",
         @Json(name = "labels_url")
         val labelsUrl: String = "",
-        val language: String = "",
+        val language: String? = null,
         @Json(name = "languages_url")
         val languagesUrl: String = "",
-        val license: LicenseResponse = LicenseResponse(),
         @Json(name = "merges_url")
         val mergesUrl: String = "",
         @Json(name = "milestones_url")

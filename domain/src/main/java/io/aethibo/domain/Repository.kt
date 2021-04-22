@@ -10,7 +10,7 @@ data class Repository(
         val name: String = "",
         val private: Boolean = false,
         val description: String = "",
-        val language: String = "",
+        val language: String? = null,
         val watchersCount: Int = 0,
         val stargazersCount: Int = 0,
         val forksCount: Int = 0,

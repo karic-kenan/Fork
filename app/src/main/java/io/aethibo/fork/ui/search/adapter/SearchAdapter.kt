@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -61,7 +62,10 @@ class SearchAdapter : ListAdapter<Repository, SearchAdapter.SearchViewHolder>(Co
             title.text = repository.name
             description.text = repository.description
             owner.text = context.getString(R.string.labelRepositoryOwner, repository.owner)
-            language.text = context.getString(R.string.labelRepositoryLanguage, repository.language)
+            repository.language?.let {
+                language.isVisible = it.isNotEmpty()
+                language.text = context.getString(R.string.labelRepositoryLanguage, it)
+            }
             date.text = context.getString(R.string.labelRepositoryUpdatedDate, repository.updatedAt)
 
             setOnClickListener {

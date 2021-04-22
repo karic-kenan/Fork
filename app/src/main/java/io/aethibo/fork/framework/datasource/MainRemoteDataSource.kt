@@ -95,7 +95,7 @@ class MainRemoteDataSourceImpl(
     override suspend fun searchRepositories(params: Map<String, String>): Resource<List<Repository>> =
         withContext(Dispatchers.IO) {
             safeCall {
-                val response: List<RepositoryResponse> = service.searchRepositories(params)
+                val response: List<RepositoryResponse> = service.searchRepositories(params).items
                 val result: List<Repository> = repositoryMapper.mapFromEntityList(response)
 
                 Resource.Success(result)
