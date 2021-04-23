@@ -1,61 +1,61 @@
 ![banner](https://user-images.githubusercontent.com/30006970/115849118-ddafdc80-a424-11eb-80cc-5d52394ddd6c.png)
 
 # Fork
-Simple android client that uses **GitHub API** to demonstate one variation of Clean architecture approach. This example only uses handful of API calls because GitHub provides a lot more and implementing all of them would somewhat beat the purpose of the project.
-This learning project is dedicated to all android developers who are trying different ways to build their app (in terms of architecture of course)
+Simple android client that uses **GitHub API** to demonstrate one variation of Clean architecture approach. This example only uses a handful of API calls because GitHub provides a lot more and implementing all of them would somewhat beat the purpose of the project.
+This learning project is dedicated to all Android developers who are trying different ways to build their app (in terms of architecture of course)
 
 # What is and what isn't
-Main purpose of the project is to demonstate how to break your application into several modules, how to use them, how to split work and via dependency injection and interfaces use functions, classes and their methods etc as sort of a black box. Given that GitHub provides variation of API calls, making entire application to support that, even though it's a good idea, would make this project take longer, and beyond its original scope.
+The main purpose of the project is to demonstrate how to break your application into several modules, how to use them, how to split the work and via dependency injection and interfaces use functions, classes and their methods etc. as sort of a black box. Given that GitHub provides variation of API calls, making the entire application to support that, even though it's a good idea, would make this project take longer, and beyond its original scope.
 So we only use some calls, and sacrifice some implementations for the sake of the scope of the project.
 
 # Screens
 As seen in preview above, we have following screens:
 #### 1. Authentication screen (not in the preview because it's single button)
-Authentication screen, given that it contains single button, will take you to your default browser where you'll login to your github account. We use OAUTH authentication in this app (more on this in installation section). When you successfully login, we save your access token to encrypted shared preferences and send you to main screen. From that moment on you'll only land on main screen on each app launch. We also use this access token to authorize all our API calls.
+Authentication screen, given that it contains single button, will take you to your default browser where you'll login to your github account. We use OAUTH authentication in this app (more on this in installation section). When you successfully login, we save your access token to encrypted shared preferences and send you to the main screen. From that moment on you'll only land on the main screen on each app launch. We also use this access token to authorize all our API calls.
 #### 2. Home screen
-This screen, it's simple purpose is to fetch currently logged in user, and display two informations on the screen which user can open: see repositories and see organisations. These will lead to external browser to your profile following said url.
+This screen, it's simple purpose is to fetch currently logged in user, and display two pieces of information on the screen which user can open: see repositories and see organisations. These will lead to external browser to your profile following said url.
 #### 3. Search screen
-Here you simple input your query and we fetch whatever you searched for. We only fetch first 10 items, and we provide no pagination in this case. Again, on one hand it's limitations of this approach, on other it's scope. Purpose here was to provide option to query for something. Once you get result back (in this case list of repositories), you cna open their detail preview.
+Here you simply input your query and we fetch whatever you searched for. We only fetch first 10 items, and we provide no pagination in this case. Again, on one hand, it's limitations of this approach, on another it's scope. The purpose here was to provide option to query for something. Once you get results back (in this case list of repositories), you can open its detail preview.
 #### 4. Feed screen
-Here currently logged in user will receive all events that are tied to them. That goes from people they follow or people having some interaction on their profile (if someone follows your, or watches your repository, for instance).
+Here currently logged in user will receive all events that are tied to them. That goes from people they follow or people having some interaction on their profile (if someone follows you, or watches your repository, for instance).
 #### 5. Notifications screen
-At the time of development, when OAUTH application was being created on GitHub, notifications scope was turned off. We have implementation for those, but this screen served as sort of 'error fallback' screen. We use lottie animation to indicate that something went wrong, ie maybe app doesn't contain scope, maybe there some other error, and this way user will for sure know that something went wrong.
+At the time of development, when OAUTH application was being created on GitHub, notifications scope was turned off. We have implementation for those, but this screen served as a sort of 'error fallback' screen. We use Lottie animation to indicate that something went wrong, ie maybe app doesn't contain scope, maybe there some other error, and this way the user will for sure know that something went wrong.
 #### 6. Profile screen
-This screen is combination of two api calls. We fetch current user information (but you can build on that and store it locally, how likely user info will change?), and we fetch their top repositories with some basic information (no need to cover screen with so much info)
+This screen is a combination of two API calls. We fetch current user information (but you can build on that and store it locally, how likely user info will change?), and we fetch their top repositories with some basic information (no need to cover screen with so much info)
 #### 7. Repository detail
-User can either get here via search screen or profile screen. We, in a similar fashion to profile screen trigger two api calls. We get basic information about repository (or you can pass that data as a bundle when you navigate, hence no need to one api call), and we get events for that repository (who is watching, who is commiting, etc).
+The user can either get here via search screen or profile screen. We, in a similar fashion to profile screen trigger two API calls. We get basic information about repository (or you can pass that data as a bundle when you navigate, hence no need to one API call), and we get events for that repository (who is watching, who is committing, etc.).
 
 # Clean architecture
-This project is loosely following clean acrhitecute approach as recommended by [Antonio Levia](https://antonioleiva.com/) in his article [Clean architecture for Android with Kotlin: a pragmatic approach for starters](https://antonioleiva.com/clean-architecture-android/). Idea is to split your app into several modules and via dependency injection and interfaces provide their usage (what we said in intorduction).
+This project is loosely following clean architecture approach as recommended by [Antonio Levia](https://antonioleiva.com/) in his article [Clean architecture for Android with Kotlin: a pragmatic approach for starters](https://antonioleiva.com/clean-architecture-android/). The idea is to split your app into several modules and via dependency injection and interfaces provide their usage (what we said in the intorduction).
 Modules are as follows:
 ##### 1. data
-All data related, from repositories, api calls, mappers for our models, datasource (only its interface) is in here. Essentially core of the app is in this module
+All data related, from repositories, API calls, mappers for our models, datasource (only its interface) is in here. Essentially core of the app is in this module
 ##### 2. domain
 Our response and request models, as well as our mapping classes.
 ##### 3. usecases
-Given we have many api calls, to handle them nicely, we split each call into its use-case. That way we can focus on single flow.
+Given we have many API calls, to handle them nicely, we split each call into its use-case. That way we can focus on single flow.
 ##### 4. app - standard
-Here we provide implementation for our datasource (this can be local and/or remote); because we implement it in app module we can use android specific components (interface is in data module) so data module (or core) is still isolated, while specific client provides the implementation however they want.
-And here are all UI parts (fragments, viewmodels, and adapters).
+Here we provide an implementation for our datasource (this can be local and/or remote); because we implement it in the app module we can use Android specific components (interface is in data module) so the data module (or core) is still isolated, while specific client provides the implementation however they want.
+And here are all UI parts (fragments, view models, and adapters).
 
 # Flow
 Flow in this case is pretty simple:
 api call -> datasource -> repository -> usecase -> viewmodel -> fragment
 
-Since we, due to use-cases, only focus on one flow, following this won't be an issue. And we handle data however we want, so we know what we get back (for instance, in datasource, we might want to re-map our response to some other model because we won't use all that information).
+Since we, due to use-cases, only focus on one flow, following this won't be an issue. And we handle data, however we want, so we know what we get back (for instance, in datasource, we might want to re-map our response to some other model because we won't use all that information).
 
 # Install
-Only main thing that needs configuration is authentication.
-Firstly you need to [create OAUTH application](https://docs.github.com/en/developers/apps/creating-an-oauth-app) and once you do you'll get access to following information:
+The only main thing that needs configuration is authentication.
+Firstly, you need to [create OAUTH application](https://docs.github.com/en/developers/apps/creating-an-oauth-app) and once you do, you'll get access to following information:
 1. clientId
 2. clientSecret
 3. redirectUrl
 
-Redirect url can be whatever you put in (whatever as in for testing purposes, for production callback url will be different), so it can be "youAppPackageName://callback" (eg: "airbnb://callback"). Remember what you select to be the scope of your application.
+Redirect url can be whatever you put in (whatever as in for testing purposes, for production callback url will be different), so it can be "youAppPackageName://callback" (ex: "airbnb://callback"). Remember what you select to be the scope of your application.
 
-Once you have those 3 informations, add them into `AppConst.kt` file (or add them to wherever file you preffer).
+Once you have those 3 pieces of information, add them into `AppConst.kt` file (or add them to wherever file you prefer).
 
-Finally, update your manifest file; add intent filter into the activity that will run authentication. In this case, since we use single activity approach, it'll be `MainActivity`:
+Finally, update your manifest file; add intent filter into the activity that will run authentication. In this case, since we use a single activity approach, it'll be `MainActivity`:
 
 ```
     `<intent-filter>
