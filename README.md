@@ -38,7 +38,7 @@ Given we have many api calls, to handle them nicely, we split each call into its
 Here we provide implementation for our datasource (this can be local and/or remote); because we implement it in app module we can use android specific components (interface is in data module) so data module (or core) is still isolated, while specific client provides the implementation however they want.
 And here are all UI parts (fragments, viewmodels, and adapters).
 
-# Flow:
+# Flow
 Flow in this case is pretty simple:
 api call -> datasource -> repository -> usecase -> viewmodel -> fragment
 
@@ -51,7 +51,7 @@ Firstly you need to [create OAUTH application](https://docs.github.com/en/develo
 2. clientSecret
 3. redirectUrl
 
-Redirect url can be whatever you put in (whatever as in for testing purposes, for production callback url will be different), so it can be "youAppPackageName://callback" (eg: "airbnb://callback")
+Redirect url can be whatever you put in (whatever as in for testing purposes, for production callback url will be different), so it can be "youAppPackageName://callback" (eg: "airbnb://callback"). Remember what you select to be the scope of your application.
 
 Once you have those 3 informations, add them into `AppConst.kt` file (or add them to wherever file you preffer).
 
