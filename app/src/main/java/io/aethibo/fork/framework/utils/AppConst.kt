@@ -6,9 +6,9 @@ object AppConst {
     const val githubApiUrl = "https://api.github.com/"
     const val authorizeUrl = "https://github.com/login/oauth/authorize"
 
-    const val clientId = "3cc0204477dee1d2ecde"
-    const val clientSecret = "fab7fecd05bbb7cc5d7987843ca18d609a12385a"
-    const val redirectUrl = "aethibo://callback"
+    const val clientId = "YOUR_CLIENT_ID"
+    const val clientSecret = "YOUR_CLIENT_SECRET"
+    const val redirectUrl = "YOUR_REDIRECT_URL" // Example: "airbnb://callback"
 
     /**
      * Shared preferences

@@ -24,9 +24,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
+                <!-- Example (this matches your redirect url):
+                    host="callback"
+                    scheme="airbnb" -->
                 <data
-                    android:host="callback"
-                    android:scheme="aethibo" />
+                    android:host="add_your_host_here"
+                    android:scheme="add_your_scheme_here" />
             </intent-filter>
         </activity>
 
