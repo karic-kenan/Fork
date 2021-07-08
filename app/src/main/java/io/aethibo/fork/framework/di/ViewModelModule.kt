@@ -7,7 +7,7 @@ import io.aethibo.fork.ui.home.viewmodel.HomeViewModel
 import io.aethibo.fork.ui.notifications.viewmodel.NotificationsViewModel
 import io.aethibo.fork.ui.profile.viewmodel.ProfileViewModel
 import io.aethibo.fork.ui.search.viewmodel.SearchViewModel
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {

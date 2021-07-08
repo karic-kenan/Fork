@@ -14,7 +14,7 @@ import io.aethibo.fork.databinding.FragmentFeedBinding
 import io.aethibo.fork.ui.auth.utils.snackBar
 import io.aethibo.fork.ui.feed.adapter.FeedAdapter
 import io.aethibo.fork.ui.feed.viewmodel.FeedViewModel
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FeedFragment : Fragment(R.layout.fragment_feed) {
 
@@ -54,7 +54,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
                     is Resource.Success -> {
                         binding.pbEvents.isVisible = false
 
-                        setupAdapter(resource.data as List<EventsResponse> ?: emptyList())
+                        setupAdapter(resource.data ?: emptyList())
                     }
                     is Resource.Failure -> {
                         binding.pbEvents.isVisible = false

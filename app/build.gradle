@@ -99,10 +99,7 @@ dependencies {
     kapt libs.moshiCodeGen
 
     // Koin
-    implementation libs.koinCore
     implementation libs.koinAndroid
-    implementation libs.koinAndroidScope
-    implementation libs.koinAndroidViewModel
 
     // Testing
     testImplementation libs.coreTest

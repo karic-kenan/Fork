@@ -24,7 +24,7 @@ import io.aethibo.fork.ui.search.viewmodel.SearchViewModel
 import io.aethibo.fork.ui.utils.hideKeyboard
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class SearchFragment : Fragment(R.layout.fragment_search), SearchView.OnQueryTextListener {

@@ -25,7 +25,7 @@ import io.aethibo.fork.ui.auth.utils.snackBar
 import io.aethibo.fork.ui.detail.view.DetailRepositoryFragment
 import io.aethibo.fork.ui.profile.adapter.RepositoriesAdapter
 import io.aethibo.fork.ui.profile.viewmodel.ProfileViewModel
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 

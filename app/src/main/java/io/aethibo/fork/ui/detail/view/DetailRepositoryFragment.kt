@@ -22,7 +22,7 @@ import io.aethibo.fork.ui.auth.utils.snackBar
 import io.aethibo.fork.ui.detail.adapter.RepositoryDetailAdapter
 import io.aethibo.fork.ui.detail.viewmodel.DetailRepositoryViewModel
 import io.aethibo.fork.ui.utils.formatLargeNumber
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailRepositoryFragment : Fragment(R.layout.fragment_repository_detail) {
 

@@ -14,7 +14,7 @@ import io.aethibo.fork.databinding.FragmentHomeBinding
 import io.aethibo.fork.ui.auth.utils.openNewTabWindow
 import io.aethibo.fork.ui.auth.utils.snackBar
 import io.aethibo.fork.ui.home.viewmodel.HomeViewModel
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
 

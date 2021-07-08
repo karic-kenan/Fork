@@ -19,7 +19,7 @@ import io.aethibo.fork.ui.auth.utils.openNewTabWindow
 import io.aethibo.fork.ui.auth.utils.snackBar
 import io.aethibo.fork.ui.auth.viewmodel.AuthViewModel
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class AuthFragment : Fragment(R.layout.fragment_auth), View.OnClickListener {

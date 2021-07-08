@@ -12,7 +12,7 @@ import io.aethibo.fork.R
 import io.aethibo.fork.databinding.FragmentNotificationsBinding
 import io.aethibo.fork.ui.auth.utils.snackBar
 import io.aethibo.fork.ui.notifications.viewmodel.NotificationsViewModel
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
 
