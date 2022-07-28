@@ -83,6 +83,7 @@ class DetailRepositoryFragment : Fragment(R.layout.fragment_repository_detail) {
                         binding.pbRepositoryDetail.isVisible = false
                         snackBar("Error: ${resource.message ?: "Unknown error occurred"}")
                     }
+                    else -> {}
                 }
             }
 
@@ -100,6 +101,7 @@ class DetailRepositoryFragment : Fragment(R.layout.fragment_repository_detail) {
                         binding.pbRepositoryDetail.isVisible = false
                         snackBar("Error: ${resource.message ?: "Unknown error occurred"}")
                     }
+                    else -> {}
                 }
             }
     }

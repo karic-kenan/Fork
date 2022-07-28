@@ -74,6 +74,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                         binding.profileProgressBar.isVisible = false
                         snackBar(result.message ?: "Unknown error occurred!")
                     }
+                    else -> {}
                 }
             }
 
@@ -89,6 +90,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                         binding.profileProgressBar.isVisible = false
                         snackBar(result.message ?: "Unknown error occurred")
                     }
+                    else -> {}
                 }
             }
     }

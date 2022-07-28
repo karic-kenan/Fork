@@ -52,6 +52,7 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
                         binding.animationView.isVisible = true
                         binding.tvNotificationError.text = resource.message
                     }
+                    else -> {}
                 }
             }
     }

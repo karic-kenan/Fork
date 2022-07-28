@@ -68,6 +68,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
                     binding.pbHome.isVisible = false
                     snackBar("Error: ${resource.message ?: "Unknown error occurred"}")
                 }
+                else -> {}
             }
         }
     }

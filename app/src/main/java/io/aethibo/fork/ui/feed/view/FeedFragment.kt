@@ -60,6 +60,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
                         binding.pbEvents.isVisible = false
                         snackBar("Error: ${resource.message ?: "Unknown error occurred"}")
                     }
+                    else -> {}
                 }
             }
 
@@ -76,6 +77,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
                     binding.pbEvents.isVisible = false
                     snackBar("Error: ${resource.message ?: "Unknown error occurred"}")
                 }
+                else -> {}
             }
         }
     }
